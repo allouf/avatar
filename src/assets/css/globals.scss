@@ -856,7 +856,7 @@ p.newAdd_txt {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: -8px;
+  //margin-left: -8px;
   margin-top: 12vh;
   @media screen and (max-width: 1300px) {
     margin-top: 30px;
@@ -874,7 +874,7 @@ p.newAdd_txt {
   p {
     color: #fff;
     font-family: $f_primary;
-    font-size: 14px;
+    //font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 15px;
@@ -930,4 +930,7 @@ p.newAdd_txt {
 .fr-brdr {
   border: 1px solid $c_white;
   border-radius: 7px;
+}
+.footer-copyright{
+  font-size: 10px;
 }

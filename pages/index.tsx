@@ -363,7 +363,7 @@ const Home: NextPage = () => {
           <Box className="footer">
             <Box className="fort_left">
               <img src="/images/mind_ic.svg" alt="" className="" />
-              <Text>
+              <Text className="footer-copyright">
                 Copyright © 2024 Incentives <br />
                 Incentives - AI Automations and blockchain
               </Text>
