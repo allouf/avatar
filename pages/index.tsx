@@ -14,11 +14,12 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie";
 import { getRecord, saveRecord } from "../helper/api.helper";
 import { EndpointUrl, endpointUrls } from "../helper/endpoint.helper";
-import t1 from "../src/assets/img/File_name_t1.json";
-import t2 from "../src/assets/img/File_name_t2.json";
-import t3 from "../src/assets/img/File_name_t3.json";
-import t4 from "../src/assets/img/File_name_t4.json";
-import t5 from "../src/assets/img/File_name_t5.json";
+import t1 from "../src/assets/img/Cube.json";
+import t2 from "../src/assets/img/Cuboctahedron.json";
+import t3 from "../src/assets/img/Dodecahedron.json";
+import t4 from "../src/assets/img/Icosahedron.json";
+import t5 from "../src/assets/img/octahedron.json";
+import man from "../public/images/rotating_3d_man_smaller.json";
 import { LocalStorageKeys, useLocalStorage } from "../helper/localstorage.hook";
 import Slider from "react-slick";
 
@@ -168,6 +169,14 @@ const Home: NextPage = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const manLottie = {
+    loop: true,
+    autoplay: true,
+    animationData: man,
+    /*rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },*/
+  };
   const settings = {
     dots: false,
     infinite: true,
@@ -198,7 +207,7 @@ const Home: NextPage = () => {
                 className="avatar_system_bg"
               />
               <Box className="loti_set">
-                <img src="/images/human_img.svg" alt="" className="human_img" />
+              <Lottie options={manLottie}></Lottie>
               </Box>
             </Box>
             <Box className="five-loti-box five-loti-box_v2">
