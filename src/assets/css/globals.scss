@@ -874,7 +874,7 @@ p.newAdd_txt {
   p {
     color: #fff;
     font-family: $f_primary;
-    //font-size: 14px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 15px;
@@ -891,14 +891,27 @@ p.newAdd_txt {
     margin-left: 30px;
   }
 }
-
+.full-width-line {
+  display: none; 
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  width: 100vw; /* Wide as the viewport */
+  margin-left: -50vw; /* Half of the viewport width, effectively making the line left aligned */
+  margin-right: -50vw; /* Same technique to push the boundary rightward */
+  border-top: 2px solid #fff; /* The desired styling */
+}
 @media screen and (max-width: 991px) {
   .footer {
     width: 100%;
     max-width: 100%;
     margin-top: 60px;
-    border-top: 2px solid #fff;
     padding-top: 20px;
+  }
+
+  .full-width-line {
+    display: block; /* Show the hr */
+    /* Now it's already positioned absolute from the setting outside the media query */
   }
 }
 @media screen and (max-width: 575px) {
@@ -924,6 +937,11 @@ p.newAdd_txt {
     margin: 0;
   }
 }
+/*@media screen and (max-width: 350px) {
+  .loti_set {
+    transform: scale(1.4) translateY(-10%); 
+  }
+}*/
 .slick-initialized .slick-slide {
   padding-right: 2px;
 }
@@ -931,6 +949,35 @@ p.newAdd_txt {
   border: 1px solid $c_white;
   border-radius: 7px;
 }
-.footer-copyright{
-  font-size: 10px;
+@media screen and (max-width: 300px) {
+  .home-main {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%; /* You probably don't need max-width, but just in case */
+    min-width: 100%; /* Ensure it spans the full width */
+    box-sizing: border-box;
+  }
+  
+  /* You might also need to target Chakra UI's auto-generated classes if they have rules affecting width. */
+  div[class^='css'] {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media screen and  (max-width: 400px) {
+  .loti_set {
+    /* Combined scaling and upward movement in one transform property */
+    transform: scale(1.2) translateY(-3vh); /* A variable percentage of the viewport height */
+    transform-origin: center; /* It scales and moves up from the bottom */
+  }
+}
+@media screen and  (min-width: 400px) and  (max-width: 500px){
+  .loti_set {
+    /* Combined scaling and upward movement in one transform property */
+    transform: scale(1.2) translateY(-3vh); /* A variable percentage of the viewport height */
+    transform-origin: center; /* It scales and moves up from the bottom */
+  }
 }

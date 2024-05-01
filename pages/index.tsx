@@ -14,11 +14,11 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie";
 import { getRecord, saveRecord } from "../helper/api.helper";
 import { EndpointUrl, endpointUrls } from "../helper/endpoint.helper";
-import t1 from "../src/assets/img/Cube.json";
-import t2 from "../src/assets/img/Cuboctahedron.json";
-import t3 from "../src/assets/img/Dodecahedron.json";
-import t4 from "../src/assets/img/Icosahedron.json";
-import t5 from "../src/assets/img/octahedron.json";
+import t1 from "../src/assets/img/Tetrahedron.json";
+import t2 from "../src/assets/img/Cube.json";
+import t3 from "../src/assets/img/Cuboctahedron.json";
+import t4 from "../src/assets/img/Dodecahedron.json";
+import t5 from "../src/assets/img/Icosahedron.json";
 import man from "../public/images/rotating_3d_man_smaller.json";
 import { LocalStorageKeys, useLocalStorage } from "../helper/localstorage.hook";
 import Slider from "react-slick";
@@ -193,6 +193,7 @@ const Home: NextPage = () => {
   let sliderRef: any = useRef<any>(null);
 
   return (
+    
     <div className="home-main">
       <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4}>
         <GridItem colSpan={[12, 12, 12, 6, 6]}>
@@ -207,7 +208,7 @@ const Home: NextPage = () => {
                 className="avatar_system_bg"
               />
               <Box className="loti_set">
-              <Lottie options={manLottie}></Lottie>
+                <Lottie options={manLottie}></Lottie>
               </Box>
             </Box>
             <Box className="five-loti-box five-loti-box_v2">
@@ -369,7 +370,11 @@ const Home: NextPage = () => {
               ""
             )}
           </Box>
-          <Box className="footer">
+        </GridItem>
+      </SimpleGrid>
+      <hr className="full-width-line" />
+      <div className="footer-border">
+        <Box className="footer">
             <Box className="fort_left">
               <img src="/images/mind_ic.svg" alt="" className="" />
               <Text className="footer-copyright">
@@ -404,9 +409,8 @@ const Home: NextPage = () => {
                 </a>
               </li>
             </ul>
-          </Box>
-        </GridItem>
-      </SimpleGrid>
+        </Box>
+      </div>
     </div>
   );
 };
