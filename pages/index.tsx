@@ -16,8 +16,8 @@ import { getRecord, saveRecord } from "../helper/api.helper";
 import { EndpointUrl, endpointUrls } from "../helper/endpoint.helper";
 import t1 from "../src/assets/img/Tetrahedron.json";
 import t2 from "../src/assets/img/Cube.json";
-import t3 from "../src/assets/img/Cuboctahedron.json";
-import t4 from "../src/assets/img/Dodecahedron.json";
+import t3 from "../src/assets/img/Dodecahedron.json";
+import t4 from "../src/assets/img/Cuboctahedron.json";
 import t5 from "../src/assets/img/Icosahedron.json";
 import man from "../public/images/rotating_3d_man_smaller.json";
 import { LocalStorageKeys, useLocalStorage } from "../helper/localstorage.hook";
@@ -41,6 +41,36 @@ const Home: NextPage = () => {
     LocalStorageKeys.REGISTERED_USER_EMAIL
   );
 
+  const [totalWallets, setTotalWallets] = useState(0);
+  const [tokensPerUser, setTokensPerUser] = useState(0);
+
+  useEffect(() => {
+    // Define an async function that fetches the airdrop stats
+    async function fetchAirdropStats() {
+        try {
+            const endpoint = endpointUrls[EndpointUrl.GET_AIRDROP_STATS];
+            const response = await fetch(endpoint);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch');
+            }
+
+            const data = await response.json();
+            // Assuming the data's structure matches what the API sends back
+            setTotalWallets(data.estimatedTotalWallets);
+            setTokensPerUser(data.airdropAmountPerWallet);
+        } catch (error) {
+            console.error('Error during airdrop stats fetch:', error);
+        }
+    }
+
+    // Call the function
+    fetchAirdropStats();
+    
+    // dependencies array can also include any other state variable 
+    // that upon changing should re-trigger this effect
+}, []);
+
   const [registeredUserEmail, setRegisteredUserEmail] = useState(getItem());
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -55,33 +85,42 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    if (address) {
-      getUserRegisterEmail(registeredUserEmail, address);
-    }
-
     if (!address || !registeredUserEmail) {
       setScreenType(SCREENS.FEATURE);
+      // Early return to prevent further execution if the check fails.
+      return;
     }
-  }, [address]);
+  
+    getUserRegisterEmail(registeredUserEmail, address);
+  }, [address, registeredUserEmail]);
 
-  const getUserRegisterEmail = async (
-    registeredUserEmail: string,
-    address: string
-  ) => {
-    console.log("test");
-    await getRecord(
-      endpointUrls[EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]?.replace(
-        ":walletId",
-        address
-      )
-    ).then((res) => {
+  const getUserRegisterEmail = async (registeredUserEmail: string, address: string) => {
+    try {
+      console.log("test");
+      const res = await getRecord(
+        endpointUrls[EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]?.replace(
+          ":walletId",
+          address
+        )
+      );
+      
       console.log("res", res);
       if (res.isWalletConnectedWithEmail) {
         setAlreadyRegistered(res.isWalletConnectedWithEmail);
         setScreenType(SCREENS.REGISTERED);
       }
-    });
-  };
+    } catch (error) {
+      // Handle the error scenario appropriately here
+      console.error('There was an error fetching the user registration email:', error);
+  
+      // Perhaps set a state variable indicating an error has occurred, display a message, etc.
+      setError("There was an error fetching the user registration email: "+error); // assuming you have a state setter like 'setErrorState'
+      // ... other error-related logic ...
+  
+      // Optionally, if you want to re-throw, make sure it's caught wherever 'getUserRegisterEmail' is called
+      // throw error;
+    }
+  }
 
   const moveToEmailScreen = () => {
     sliderRef?.slickGoTo(1);
@@ -213,11 +252,11 @@ const Home: NextPage = () => {
             </Box>
             <Box className="five-loti-box five-loti-box_v2">
               <Box className="sem_loti_five">
-                <Heading as="h1">Emotion</Heading>
+                <Heading as="h1">Thought</Heading>
                 <Lottie options={top} width={100} height={120}></Lottie>
               </Box>
               <Box className="sem_loti_five">
-                <Heading as="h1">Thought</Heading>
+                <Heading as="h1">Emotion</Heading>
                 <Lottie options={top2} width={100} height={120}></Lottie>
               </Box>
               <Box className="sem_loti_five">
@@ -312,17 +351,17 @@ const Home: NextPage = () => {
                     $INCENTIVES
                   </Heading>
                   <Heading as="h6" className="def_h6_c2 m_b_sem_c2">
-                    1 000 000
+                      One Million 
                   </Heading>
                   <Text className="def_per_c2 m_b_sem_c2">
                     Registered wallets
                   </Text>
                   <Heading as="h5" className="def_h5_c2 m_b_sem_c2">
-                    78923
+                      {totalWallets}
                   </Heading>
                   <Text className="def_per_c2 m_b_sem_c2">Your Rewards</Text>
                   <Heading as="h5" className="def_h5_c2 m_b_sem_c2">
-                    2356 $INCENTIVES
+                      {tokensPerUser.toFixed(2)} $INCENTIVES
                   </Heading>
                 </Box>
               </div>
@@ -373,44 +412,46 @@ const Home: NextPage = () => {
         </GridItem>
       </SimpleGrid>
       <hr className="full-width-line" />
-      <div className="footer-border">
+        <div className="footer-border">
         <Box className="footer">
-            <Box className="fort_left">
-              <img src="/images/mind_ic.svg" alt="" className="" />
-              <Text className="footer-copyright">
-                Copyright © 2024 Incentives <br />
-                Incentives - AI Automations and blockchain
-              </Text>
-            </Box>
-            <ul className="fotr_right">
-              <li>
-                <a href="#">
-                  <img src="/images/social_ic01.svg" alt="" className="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/images/social_ic02.svg" alt="" className="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/images/social_ic03.svg" alt="" className="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/images/social_ic04.svg" alt="" className="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/images/social_ic05.svg" alt="" className="" />
-                </a>
-              </li>
-            </ul>
+        <Box className="fort_left">
+        <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
+          <img src="/images/mind_ic.svg" alt="Incentives Mind Icon" />
+        </a>
+        <Text className="footer-copyright">
+          Copyright © 2024 Incentives <br />
+          Incentives - AI Automations and blockchain
+        </Text>
         </Box>
-      </div>
+        <ul className="fotr_right">
+        <li>
+          <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
+            <img src="/images/social_ic01.svg" alt="X Social Icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
+            <img src="/images/social_ic02.svg" alt="Telegram Social Icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/social_ic03.svg" alt="Substack Social Icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/social_ic04.svg" alt="Instagram Social Icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
+            <img src="/images/social_ic05.svg" alt="YouTube Social Icon" />
+          </a>
+        </li>
+        </ul>
+        </Box>
+        </div>
     </div>
   );
 };

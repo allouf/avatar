@@ -26,30 +26,34 @@ export default async function handler(
   if (req.method === 'GET') {
     try {
       await connectToDatabase();
+      console.log('Database connection was successful');
 
-      const { walletId } = req.query as {
-        walletId: string;
-      };
+      const { walletId } = req.query as { walletId: string };
 
       if (isFieldMissing(walletId)) {
-        return handleError(res, 400, "'walletId' are required");
+        console.error('No walletId provided')
+        return handleError(res, 400, "'walletId' is required");
       }
 
-      // Check if the email or walletId already exists in the database
       const existingWalletId = await UserWallet.findOne({ walletId });
       const isWalletConnectedWithEmail = !!existingWalletId;
 
-      console.log('is wallet connected with email', isWalletConnectedWithEmail);
-
-      res.status(201).json({
+      console.log('Database query result:', existingWalletId);
+      res.status(200).json({
         isWalletConnectedWithEmail,
-        message: 'User wallet and email record is fetched successfully.',
+        message: 'User wallet record is fetched successfully.',
       });
     } catch (error) {
-      console.error('Error getting user wallet and email records:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+      } else {
+        console.error('An unknown error occurred:', error);
+        res.status(500).json({ error: 'Internal server error', details: JSON.stringify(error) });
+      }
     }
   } else {
+    console.error(`Method ${req.method} not allowed`)
     res.status(405).json({ error: 'Method Not Allowed' });
   }
 }

@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../../utils/mongo-init';
 import UserWallet from '../../models/UserWallet';
+import AirdropInfo from '../../models/AirdropInfo';
+import { IAirdropInfo } from '../../models/AirdropInfo';
 
 const validateEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,17 +26,29 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'POST') {
+  if (req.method === 'GET') {
     try {
-      console.log(
-        'connecting to db...',
-        process.env.NEXT_PUBLIC_MONGO_CONNECTION_URL
-      );
       await connectToDatabase();
-      console.log('connected to db');
+      const estimatedTotalWallets = await UserWallet.estimatedDocumentCount() as unknown as number;
+      const airdropShare = estimatedTotalWallets > 0
+        ? 1000000 / estimatedTotalWallets
+        : 0;
+
+      res.json({
+        totalWalletsCount: estimatedTotalWallets,
+        airdropSharePerUser: airdropShare
+      });
+      
+    } catch (error) {
+      console.error('Error getting user wallet count:', error);
+      res.status(500).json({ error: 'Internal Server Error', details: error });
+    }
+  }
+  else if (req.method === 'POST') {
+    try {
+      await connectToDatabase();
 
       const { email, walletId } = req.body;
-
       if (isFieldMissing(email) || isFieldMissing(walletId)) {
         return handleError(res, 400, "'email' and 'walletId' are required");
       }
@@ -42,33 +56,36 @@ export default async function handler(
       if (!validateEmail(email)) {
         return handleError(res, 400, 'Email is invalid');
       }
+      const existingUserWallet = await UserWallet.findOne({ email: email });
+      const existingWalletId = await UserWallet.findOne({ walletId: walletId });
 
-      // Check if the email or walletId already exists in the database
-      const existingUser = await UserWallet.findOne({ email });
-      const existingWalletId = await UserWallet.findOne({ walletId });
-
-      if (existingUser || existingWalletId) {
-        const errorMsg = existingUser ? 'Email' : 'Wallet Id';
-
-        if (existingUser && existingWalletId) {
-          return res.status(200).json({
-            emailAlreadyRegisteredWithWallet: true,
-            message: `Email is already connected with wallet id`,
-          });
-        }
-
-        return handleError(res, 400, `${errorMsg} is already registered`);
+      if (existingUserWallet || existingWalletId) {
+        let errorMsg = 'Provided information is already registered.';
+        return handleError(res, 409, errorMsg); // 409 Conflict
       }
 
-      const userWallet = new UserWallet({ email, walletId });
-      await userWallet.save();
+      await new UserWallet({ email, walletId }).save();
 
-      res.status(201).json({ message: 'User wallet data stored successfully' });
+      let airdropInfoDocument = await AirdropInfo.findOne();
+
+      if (!airdropInfoDocument) {
+        airdropInfoDocument = new AirdropInfo({
+          airdropTotal: 1000000,
+          tokensPerUser: 0
+        });
+        await airdropInfoDocument.save();
+      } else {
+        const totalUsers = await UserWallet.countDocuments();
+        airdropInfoDocument.tokensPerUser = totalUsers > 0 ? 1000000 / totalUsers : airdropInfoDocument.tokensPerUser;
+        await airdropInfoDocument.save();
+      }
+      res.status(201).json({ success: true, message: 'User wallet registered successfully.'});
     } catch (error) {
-      console.error('Error storing user wallet data:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.error('Error on registering user wallet data:', error);
+      handleError(res, 500, 'Internal server error', {details: error});
     }
-  } else {
-    res.status(405).json({ error: 'Method Not Allowed' });
+  }
+  else {
+    handleError(res, 405, 'Method Not Allowed');
   }
 }

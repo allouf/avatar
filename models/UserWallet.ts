@@ -3,15 +3,14 @@ import mongoose, { Schema, Document } from "mongoose";
 interface UserWallet extends Document {
   email: string;
   walletId: string;
+  hasClaimed?: boolean;
 }
 
-const UserWalletSchema: Schema = new Schema(
-  {
-    email: { type: String, required: true },
-    walletId: { type: String, required: true },
-  },
-  { collection: "UserWallet", timestamps: true }
-);
+const UserWalletSchema: Schema = new Schema({
+  email: { type: String, required: true },
+  walletId: { type: String, required: true },
+  hasClaimed: { type: Boolean, default: false }
+},
+{ collection: "UserWallet", timestamps: true });
 
-export default mongoose.models.UserWallet ||
-  mongoose.model<UserWallet>("UserWallet", UserWalletSchema);
+export default mongoose.models.UserWallet || mongoose.model<UserWallet>("UserWallet", UserWalletSchema);
