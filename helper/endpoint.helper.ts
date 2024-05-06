@@ -1,4 +1,8 @@
-export const domainUrl = `${process.env.BACKEND_URL}/api`;
+const backendUrl = process.env.NODE_ENV === 'production'
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000';
+
+export const domainUrl = `${backendUrl}/api`;
 export enum EndpointUrl {
   JOIN_WISHLIST = 0,
   IS_USER_WALLET_CONNECTED_WITH_EMAIL = 1,
