@@ -1,4 +1,4 @@
-export const domainUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api`;
+export const domainUrl = `${process.env.BACKEND_URL}/api`;
 export enum EndpointUrl {
   JOIN_WISHLIST = 0,
   IS_USER_WALLET_CONNECTED_WITH_EMAIL = 1,
