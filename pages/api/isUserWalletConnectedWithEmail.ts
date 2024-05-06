@@ -1,6 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../../utils/mongo-init';
 import UserWallet from '../../models/UserWallet';
+import Cors from 'cors';
+import initMiddleware from '../../utils/init-middleware';
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  Cors({
+    // Only allow requests with GET, POST and OPTIONS
+    methods: ['GET', 'POST', 'OPTIONS'],
+  })
+);
 
 const validateEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,6 +33,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  await cors(req, res);
   if (req.method === 'GET') {
     try {
       await connectToDatabase();
