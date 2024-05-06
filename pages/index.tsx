@@ -8,7 +8,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { useAddress } from "@thirdweb-dev/react";
+import { useAddress , useNetwork } from "@thirdweb-dev/react";
 import { NextPage } from "next";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie";
@@ -17,7 +17,7 @@ import { EndpointUrl, endpointUrls } from "../helper/endpoint.helper";
 import t1 from "../src/assets/img/Tetrahedron.json";
 import t2 from "../src/assets/img/Cube.json";
 import t3 from "../src/assets/img/Dodecahedron.json";
-import t4 from "../src/assets/img/Cuboctahedron.json";
+import t4 from "../src/assets/img/octahedron.json";
 import t5 from "../src/assets/img/Icosahedron.json";
 import man from "../public/images/rotating_3d_man_smaller.json";
 import { LocalStorageKeys, useLocalStorage } from "../helper/localstorage.hook";
@@ -44,32 +44,7 @@ const Home: NextPage = () => {
   const [totalWallets, setTotalWallets] = useState(0);
   const [tokensPerUser, setTokensPerUser] = useState(0);
 
-  useEffect(() => {
-    // Define an async function that fetches the airdrop stats
-    async function fetchAirdropStats() {
-        try {
-            const endpoint = endpointUrls[EndpointUrl.GET_AIRDROP_STATS];
-            const response = await fetch(endpoint);
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch');
-            }
-
-            const data = await response.json();
-            // Assuming the data's structure matches what the API sends back
-            setTotalWallets(data.estimatedTotalWallets);
-            setTokensPerUser(data.airdropAmountPerWallet);
-        } catch (error) {
-            console.error('Error during airdrop stats fetch:', error);
-        }
-    }
-
-    // Call the function
-    fetchAirdropStats();
-    
-    // dependencies array can also include any other state variable 
-    // that upon changing should re-trigger this effect
-}, []);
+  const { chainId } = useNetwork();
 
   const [registeredUserEmail, setRegisteredUserEmail] = useState(getItem());
 
@@ -83,16 +58,6 @@ const Home: NextPage = () => {
       setError("");
     }
   };
-
-  useEffect(() => {
-    if (!address || !registeredUserEmail) {
-      setScreenType(SCREENS.FEATURE);
-      // Early return to prevent further execution if the check fails.
-      return;
-    }
-  
-    getUserRegisterEmail(registeredUserEmail, address);
-  }, [address, registeredUserEmail]);
 
   const getUserRegisterEmail = async (registeredUserEmail: string, address: string) => {
     try {
@@ -167,6 +132,106 @@ const Home: NextPage = () => {
       isClosable: true,
     });
   };
+
+    // Check if the connected network is Ethereum Mainnet (chainId 1)
+    useEffect(() => {
+      if (chainId !== undefined && chainId !== 1) {
+        toast({
+          title: 'Network Error',
+          description: 'Please connect to the Ethereum Mainnet.',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    }, [chainId, toast]);
+  
+    // Listen for changes in the wallet connection
+    useEffect(() => {
+      if (address) {
+        // Wallet is connected or has changed
+        console.log(`Wallet connected: ${address}`);
+        // Refresh data or perform any actions needed when the wallet is connected or changed
+        getUserRegisterEmail(registeredUserEmail, address);
+      } else {
+        // Wallet is disconnected
+        console.log('Wallet disconnected');
+        // Handle the wallet disconnection logic here
+        setAlreadyRegistered(false);
+        setScreenType(SCREENS.FEATURE);
+        // Optionally, you could reset other state variables or redirect the user
+      }
+    }, [address, registeredUserEmail]);
+
+  useEffect(() => {
+    // Define an async function that fetches the airdrop stats
+    async function fetchAirdropStats() {
+        try {
+            const endpoint = endpointUrls[EndpointUrl.GET_AIRDROP_STATS];
+            const response = await fetch(endpoint);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch');
+            }
+
+            const data = await response.json();
+            // Assuming the data's structure matches what the API sends back
+            setTotalWallets(data.estimatedTotalWallets);
+            setTokensPerUser(data.airdropAmountPerWallet);
+        } catch (error) {
+            console.error('Error during airdrop stats fetch:', error);
+        }
+    }
+
+    // Call the function
+    fetchAirdropStats();
+    
+    // dependencies array can also include any other state variable 
+    // that upon changing should re-trigger this effect
+}, []);
+
+useEffect(() => {
+  // This function checks if the current address is registered
+  const checkRegistration = async (currentAddress) => {
+    try {
+      const res = await getRecord(
+        endpointUrls[EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]?.replace(
+          ":walletId",
+          currentAddress
+        )
+      );
+      
+      if (res.isWalletConnectedWithEmail) {
+        setAlreadyRegistered(res.isWalletConnectedWithEmail);
+        setScreenType(SCREENS.REGISTERED);
+        setRegisteredUserEmail(getItem()); // Assuming getItem() fetches the email associated with the current address
+      } else {
+        setAlreadyRegistered(false);
+        setScreenType(SCREENS.FEATURE);
+        setRegisteredUserEmail(null);
+      }
+    } catch (error) {
+      console.error('There was an error fetching the user registration status:', error);
+      setError("There was an error fetching the user registration status: " + error);
+    }
+  };
+
+  if (address) {
+    checkRegistration(address);
+  }
+}, [address]);
+
+  useEffect(() => {
+    if (!address || !registeredUserEmail) {
+      setScreenType(SCREENS.FEATURE);
+      // Early return to prevent further execution if the check fails.
+      return;
+    }
+  
+    getUserRegisterEmail(registeredUserEmail, address);
+  }, [address, registeredUserEmail]);
+
+
 
   const top = {
     loop: true,
@@ -351,7 +416,7 @@ const Home: NextPage = () => {
                     $INCENTIVES
                   </Heading>
                   <Heading as="h6" className="def_h6_c2 m_b_sem_c2">
-                      One Million 
+                      1000000
                   </Heading>
                   <Text className="def_per_c2 m_b_sem_c2">
                     Registered wallets
@@ -385,10 +450,10 @@ const Home: NextPage = () => {
               ''
             )} */}
           <Box className="join_btn_pernt">
-            {slideNum === 0 ? (
-              <Button onClick={moveToEmailScreen}>Join</Button>
-            ) : (
-              ""
+            {slideNum === 0 && (
+            <Button onClick={moveToEmailScreen} isDisabled={alreadyRegistered}>
+            {alreadyRegistered ? 'Joined' : 'Join'}
+            </Button>
             )}
             {slideNum === 1 && !alreadyRegistered ? (
               <Button
