@@ -100,7 +100,7 @@ const Home: NextPage = () => {
 
     saveRecord(endpointUrls[EndpointUrl.JOIN_WISHLIST], {
       email: email,
-      walletId: address || "0x2ffafa23d3323422342123123114asdf",
+      walletId: address,
     })
       .then((res) => {
         console.log("here", email);
@@ -113,10 +113,19 @@ const Home: NextPage = () => {
           "success"
         );
       })
-      .catch((error: any) => {
-        console.log("error", error);
-        handleShowAlert("Error", address + " is already registered", "error");
-      });
+      .catch((error) => {
+          if (error instanceof Error) {
+            // Extract the server's response message
+            console.error(error.message);
+            // Display the server's error message to the user
+            handleShowAlert("Error", error.message, "error");
+          } else {
+            // Handle cases where the error is not an instance of Error
+            console.error('An unexpected error occurred');
+            // Display a generic error message to the user
+            handleShowAlert("Error", "An unexpected error occurred", "error");
+          }
+        });
   };
 
   const handleShowAlert = (

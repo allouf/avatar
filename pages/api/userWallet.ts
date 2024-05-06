@@ -45,26 +45,32 @@ export default async function handler(
     }
   }
   else if (req.method === 'POST') {
-    try {
-      await connectToDatabase();
+      try {
+        await connectToDatabase();
+  
+        const { email, walletId } = req.body;
+        if (isFieldMissing(email) || isFieldMissing(walletId)) {
+          return handleError(res, 400, "'email' and 'walletId' are required");
+        }
+  
+        if (!validateEmail(email)) {
+          return handleError(res, 400, 'Email is invalid');
+        }
+  
+        // Check if the email is already registered
+        const existingUserWallet = await UserWallet.findOne({ email: email });
+        if (existingUserWallet) {
+          return handleError(res, 409, 'Email is already registered.');
+        }
 
-      const { email, walletId } = req.body;
-      if (isFieldMissing(email) || isFieldMissing(walletId)) {
-        return handleError(res, 400, "'email' and 'walletId' are required");
-      }
-
-      if (!validateEmail(email)) {
-        return handleError(res, 400, 'Email is invalid');
-      }
-      const existingUserWallet = await UserWallet.findOne({ email: email });
-      const existingWalletId = await UserWallet.findOne({ walletId: walletId });
-
-      if (existingUserWallet || existingWalletId) {
-        let errorMsg = 'Provided information is already registered.';
-        return handleError(res, 409, errorMsg); // 409 Conflict
-      }
-
-      await new UserWallet({ email, walletId }).save();
+        // Check if the wallet ID is already registered
+        const existingWalletId = await UserWallet.findOne({ walletId: walletId });
+        if (existingWalletId) {
+          return handleError(res, 409, 'Wallet ID is already registered.');
+        }
+  
+        // If neither the email nor wallet ID is registered, proceed to save the new user wallet
+        await new UserWallet({ email, walletId }).save();
 
       let airdropInfoDocument = await AirdropInfo.findOne();
 
@@ -82,7 +88,14 @@ export default async function handler(
       res.status(201).json({ success: true, message: 'User wallet registered successfully.'});
     } catch (error) {
       console.error('Error on registering user wallet data:', error);
-      handleError(res, 500, 'Internal server error', {details: error});
+      if (error instanceof Error) {
+        // Pass the error message if it's an instance of Error
+        handleError(res, 500, 'Internal server error', { details: error.message });
+      } else {
+        // If it's not an Error instance, log the entire error object
+        console.error(error);
+        handleError(res, 500, 'Internal server error', { details: 'An unexpected error occurred' });
+      }
     }
   }
   else {
