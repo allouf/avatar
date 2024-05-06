@@ -1,5 +1,5 @@
 const backendUrl = process.env.NODE_ENV === 'production'
-  ? `https://${process.env.VERCEL_URL}`
+  ? `https://whitelist-seven-delta.vercel.app`
   : 'http://localhost:3000';
 
 export const domainUrl = `${backendUrl}/api`;
