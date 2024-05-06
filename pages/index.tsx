@@ -44,7 +44,8 @@ const Home: NextPage = () => {
   const [totalWallets, setTotalWallets] = useState(0);
   const [tokensPerUser, setTokensPerUser] = useState(0);
 
-  const { chainId } = useNetwork();
+  const [network] = useNetwork();
+  const chainId = network.data.chain?.chainId;
 
   const [registeredUserEmail, setRegisteredUserEmail] = useState(getItem());
 
@@ -201,7 +202,7 @@ const Home: NextPage = () => {
 
 useEffect(() => {
   // This function checks if the current address is registered
-  const checkRegistration = async (currentAddress) => {
+  const checkRegistration = async (currentAddress: string) => {
     try {
       const res = await getRecord(
         endpointUrls[EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]?.replace(

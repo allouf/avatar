@@ -72,19 +72,21 @@ export default async function handler(
         // If neither the email nor wallet ID is registered, proceed to save the new user wallet
         await new UserWallet({ email, walletId }).save();
 
-      let airdropInfoDocument = await AirdropInfo.findOne();
+        let airdropInfoDocument = await AirdropInfo.findOne().exec();
 
-      if (!airdropInfoDocument) {
-        airdropInfoDocument = new AirdropInfo({
-          airdropTotal: 1000000,
-          tokensPerUser: 0
-        });
-        await airdropInfoDocument.save();
-      } else {
-        const totalUsers = await UserWallet.countDocuments();
-        airdropInfoDocument.tokensPerUser = totalUsers > 0 ? 1000000 / totalUsers : airdropInfoDocument.tokensPerUser;
-        await airdropInfoDocument.save();
-      }
+        // If you need to work with the document, you should execute the query:
+        if (!airdropInfoDocument) {
+          airdropInfoDocument = new AirdropInfo({
+            airdropTotal: 1000000,
+            tokensPerUser: 0
+          });
+          await airdropInfoDocument.save();
+        } else {
+          // If you need to update the document, make sure to call `.exec()` if you're using the result of `findOne` directly
+          const totalUsers = await UserWallet.countDocuments().exec();
+          airdropInfoDocument.tokensPerUser = totalUsers > 0 ? 1000000 / totalUsers : airdropInfoDocument.tokensPerUser;
+          await airdropInfoDocument.save();
+        }
       res.status(201).json({ success: true, message: 'User wallet registered successfully.'});
     } catch (error) {
       console.error('Error on registering user wallet data:', error);
