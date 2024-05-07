@@ -93,40 +93,37 @@ const Home: NextPage = () => {
     // setScreenType(SCREENS.EMAIL);
   };
 
-  const joinWishList = () => {
+  const joinWishList = async () => {
     if (!email || !address) {
       handleShowAlert("Error", "'email' and 'walletId' are required", "error");
       return;
     }
-
-    saveRecord(endpointUrls[EndpointUrl.JOIN_WISHLIST], {
-      email: email,
-      walletId: address,
-    })
-      .then((res) => {
-        console.log("here", email);
-        setItem(email);
-        setScreenType(SCREENS.REGISTERED);
-        setRegisteredUserEmail(email);
-        handleShowAlert(
-          "Success",
-          "Congratulations! You've been added to the wishlist.",
-          "success"
-        );
-      })
-      .catch((error) => {
-          if (error instanceof Error) {
-            // Extract the server's response message
-            console.error(error.message);
-            // Display the server's error message to the user
-            handleShowAlert("Error", error.message, "error");
-          } else {
-            // Handle cases where the error is not an instance of Error
-            console.error('An unexpected error occurred');
-            // Display a generic error message to the user
-            handleShowAlert("Error", "An unexpected error occurred", "error");
-          }
-        });
+  
+    try {
+      const res = await saveRecord(endpointUrls[EndpointUrl.JOIN_WISHLIST], {
+        email: email,
+        walletId: address,
+      });
+      console.log("here", email);
+      await fetchAirdropStats(); // Make sure this function is defined as async
+      setItem(email);
+      setAlreadyRegistered(true);
+      setScreenType(SCREENS.REGISTERED);
+      setRegisteredUserEmail(email);
+      handleShowAlert(
+        "Success",
+        "Congratulations! You've been added to the wishlist.",
+        "success"
+      );
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+        handleShowAlert("Error", error.message, "error");
+      } else {
+        console.error('An unexpected error occurred');
+        handleShowAlert("Error", "An unexpected error occurred", "error");
+      }
+    }
   };
 
   const handleShowAlert = (
@@ -145,7 +142,8 @@ const Home: NextPage = () => {
 
     // Check if the connected network is Ethereum Mainnet (chainId 1)
     useEffect(() => {
-      if (chainId !== undefined && chainId !== 1) {
+      // Check if chainId is defined and not equal to 1 (Ethereum Mainnet)
+      if (typeof chainId === 'number' && chainId !== 1) {
         toast({
           title: 'Network Error',
           description: 'Please connect to the Ethereum Mainnet.',
@@ -173,29 +171,23 @@ const Home: NextPage = () => {
       }
     }, [address, registeredUserEmail]);
 
-  useEffect(() => {
-    // Define an async function that fetches the airdrop stats
-    async function fetchAirdropStats() {
-        try {
-            const endpoint = endpointUrls[EndpointUrl.GET_AIRDROP_STATS];
-            const response = await fetch(endpoint);
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch');
-            }
-
-            const data = await response.json();
-            // Assuming the data's structure matches what the API sends back
-            setTotalWallets(data.estimatedTotalWallets);
-            setTokensPerUser(data.airdropAmountPerWallet);
-        } catch (error) {
-            console.error('Error during airdrop stats fetch:', error);
+    const fetchAirdropStats = async () => {
+      try {
+        const response = await fetch('/api/userWalletStats');
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
         }
-    }
+        const data = await response.json();
+        setTotalWallets(data.estimatedTotalWallets);
+        setTokensPerUser(data.airdropAmountPerWallet);
+      } catch (error) {
+        console.error('Error during airdrop stats fetch:', error);
+      }
+    };
 
+  useEffect(() => {
     // Call the function
     fetchAirdropStats();
-    
     // dependencies array can also include any other state variable 
     // that upon changing should re-trigger this effect
 }, []);
