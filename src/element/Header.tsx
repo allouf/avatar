@@ -69,40 +69,42 @@ export default function Header() {
                   </Button>
                 </li>
                 <li>
-                  <Button as='a' href='/' className='semThree_btn'>
-                    <svg
-                      width='40'
-                      height='17'
-                      viewBox='0 0 40 17'
-                      fill='none'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <circle
-                        cx='37.1164'
-                        cy='13.9646'
-                        r='2.45287'
-                        fill='white'
+                  <a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" target="_blank" rel="noopener noreferrer">
+                    <Button className='semThree_btn'>
+                      <svg
+                        width='40'
+                        height='17'
+                        viewBox='0 0 40 17'
+                        fill='none'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <circle
+                          cx='37.1164'
+                          cy='13.9646'
+                          r='2.45287'
+                          fill='white'
+                        />
+                        <path
+                          className='path'
+                          d='M37.4667 13.6148V1H1.02405V9.28971'
+                          stroke='white'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                        />
+                      </svg>
+                      <img
+                        src='/images/menu-ic02.svg'
+                        alt=''
+                        className='menu-ic'
                       />
-                      <path
-                        className='path'
-                        d='M37.4667 13.6148V1H1.02405V9.28971'
-                        stroke='white'
-                        strokeWidth='2'
-                        strokeLinecap='round'
+                      <img
+                        src='/images/visual_novel_img.svg'
+                        alt=''
+                        className='imgPernt'
                       />
-                    </svg>
-                    <img
-                      src='/images/menu-ic02.svg'
-                      alt=''
-                      className='menu-ic'
-                    />
-                    <img
-                      src='/images/visual_novel_img.svg'
-                      alt=''
-                      className='imgPernt'
-                    />
-                    <span className='center_txt'>Visual novel</span>
-                  </Button>
+                      <span className='center_txt'>Visual novel</span>
+                    </Button>
+                  </a>
                 </li>
                 <li>
                   <Button as='a' href='/' className='semThree_btn'>
