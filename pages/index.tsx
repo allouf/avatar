@@ -8,19 +8,19 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { useAddress , useNetwork } from "@thirdweb-dev/react";
-import { NextPage } from "next";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import {useAddress, useNetwork} from "@thirdweb-dev/react";
+import {NextPage} from "next";
+import {ChangeEvent, useEffect, useRef, useState} from "react";
 import Lottie from "react-lottie";
-import { getRecord, saveRecord } from "../helper/api.helper";
-import { EndpointUrl, endpointUrls } from "../helper/endpoint.helper";
+import {getRecord, saveRecord} from "../helper/api.helper";
+import {EndpointUrl, endpointUrls} from "../helper/endpoint.helper";
 import t1 from "../src/assets/img/Tetrahedron.json";
 import t2 from "../src/assets/img/Cube.json";
 import t3 from "../src/assets/img/octahedron.json";
 import t4 from "../src/assets/img/Dodecahedron.json";
 import t5 from "../src/assets/img/Icosahedron.json";
 import man from "../public/images/rotating_3d_man_smaller.json";
-import { LocalStorageKeys, useLocalStorage } from "../helper/localstorage.hook";
+import {LocalStorageKeys, useLocalStorage} from "../helper/localstorage.hook";
 import Slider from "react-slick";
 
 enum SCREENS {
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
   const address = useAddress();
   const toast = useToast();
   const [screenType, setScreenType] = useState<SCREENS | string>("");
-  const { setItem, getItem } = useLocalStorage(
+  const {setItem, getItem} = useLocalStorage(
     LocalStorageKeys.REGISTERED_USER_EMAIL
   );
 
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
           address
         )
       );
-      
+
       console.log("res", res);
       if (res.isWalletConnectedWithEmail) {
         setAlreadyRegistered(res.isWalletConnectedWithEmail);
@@ -78,11 +78,11 @@ const Home: NextPage = () => {
     } catch (error) {
       // Handle the error scenario appropriately here
       console.error('There was an error fetching the user registration email:', error);
-  
+
       // Perhaps set a state variable indicating an error has occurred, display a message, etc.
-      setError("There was an error fetching the user registration email: "+error); // assuming you have a state setter like 'setErrorState'
+      setError("There was an error fetching the user registration email: " + error); // assuming you have a state setter like 'setErrorState'
       // ... other error-related logic ...
-  
+
       // Optionally, if you want to re-throw, make sure it's caught wherever 'getUserRegisterEmail' is called
       // throw error;
     }
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
       handleShowAlert("Error", "'email' and 'walletId' are required", "error");
       return;
     }
-  
+
     try {
       const res = await saveRecord(endpointUrls[EndpointUrl.JOIN_WISHLIST], {
         email: email,
@@ -140,88 +140,88 @@ const Home: NextPage = () => {
     });
   };
 
-    // Check if the connected network is Ethereum Mainnet (chainId 1)
-    useEffect(() => {
-      // Check if chainId is defined and not equal to 1 (Ethereum Mainnet)
-      if (typeof chainId === 'number' && chainId !== 1) {
-        toast({
-          title: 'Network Error',
-          description: 'Please connect to the Ethereum Mainnet.',
-          status: 'error',
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    }, [chainId, toast]);
-  
-    // Listen for changes in the wallet connection
-    useEffect(() => {
-      if (address) {
-        // Wallet is connected or has changed
-        console.log(`Wallet connected: ${address}`);
-        // Refresh data or perform any actions needed when the wallet is connected or changed
-        getUserRegisterEmail(registeredUserEmail, address);
-      } else {
-        // Wallet is disconnected
-        console.log('Wallet disconnected');
-        // Handle the wallet disconnection logic here
-        setAlreadyRegistered(false);
-        setScreenType(SCREENS.FEATURE);
-        // Optionally, you could reset other state variables or redirect the user
-      }
-    }, [address, registeredUserEmail]);
+  // Check if the connected network is Ethereum Mainnet (chainId 1)
+  useEffect(() => {
+    // Check if chainId is defined and not equal to 1 (Ethereum Mainnet)
+    if (typeof chainId === 'number' && chainId !== 1) {
+      toast({
+        title: 'Network Error',
+        description: 'Please connect to the Ethereum Mainnet.',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  }, [chainId, toast]);
 
-    const fetchAirdropStats = async () => {
-      try {
-        const response = await fetch('/api/userWalletStats');
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
-        const data = await response.json();
-        setTotalWallets(data.estimatedTotalWallets);
-        setTokensPerUser(data.airdropAmountPerWallet);
-      } catch (error) {
-        console.error('Error during airdrop stats fetch:', error);
+  // Listen for changes in the wallet connection
+  useEffect(() => {
+    if (address) {
+      // Wallet is connected or has changed
+      console.log(`Wallet connected: ${address}`);
+      // Refresh data or perform any actions needed when the wallet is connected or changed
+      getUserRegisterEmail(registeredUserEmail, address);
+    } else {
+      // Wallet is disconnected
+      console.log('Wallet disconnected');
+      // Handle the wallet disconnection logic here
+      setAlreadyRegistered(false);
+      setScreenType(SCREENS.FEATURE);
+      // Optionally, you could reset other state variables or redirect the user
+    }
+  }, [address, registeredUserEmail]);
+
+  const fetchAirdropStats = async () => {
+    try {
+      const response = await fetch('/api/userWalletStats');
+      if (!response.ok) {
+        throw new Error('Failed to fetch');
       }
-    };
+      const data = await response.json();
+      setTotalWallets(data.estimatedTotalWallets);
+      setTokensPerUser(data.airdropAmountPerWallet);
+    } catch (error) {
+      console.error('Error during airdrop stats fetch:', error);
+    }
+  };
 
   useEffect(() => {
     // Call the function
     fetchAirdropStats();
-    // dependencies array can also include any other state variable 
+    // dependencies array can also include any other state variable
     // that upon changing should re-trigger this effect
-}, []);
+  }, []);
 
-useEffect(() => {
-  // This function checks if the current address is registered
-  const checkRegistration = async (currentAddress: string) => {
-    try {
-      const res = await getRecord(
-        endpointUrls[EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]?.replace(
-          ":walletId",
-          currentAddress
-        )
-      );
-      
-      if (res.isWalletConnectedWithEmail) {
-        setAlreadyRegistered(res.isWalletConnectedWithEmail);
-        setScreenType(SCREENS.REGISTERED);
-        setRegisteredUserEmail(getItem()); // Assuming getItem() fetches the email associated with the current address
-      } else {
-        setAlreadyRegistered(false);
-        setScreenType(SCREENS.FEATURE);
-        setRegisteredUserEmail(null);
+  useEffect(() => {
+    // This function checks if the current address is registered
+    const checkRegistration = async (currentAddress: string) => {
+      try {
+        const res = await getRecord(
+          endpointUrls[EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]?.replace(
+            ":walletId",
+            currentAddress
+          )
+        );
+
+        if (res.isWalletConnectedWithEmail) {
+          setAlreadyRegistered(res.isWalletConnectedWithEmail);
+          setScreenType(SCREENS.REGISTERED);
+          setRegisteredUserEmail(getItem()); // Assuming getItem() fetches the email associated with the current address
+        } else {
+          setAlreadyRegistered(false);
+          setScreenType(SCREENS.FEATURE);
+          setRegisteredUserEmail(null);
+        }
+      } catch (error) {
+        console.error('There was an error fetching the user registration status:', error);
+        setError("There was an error fetching the user registration status: " + error);
       }
-    } catch (error) {
-      console.error('There was an error fetching the user registration status:', error);
-      setError("There was an error fetching the user registration status: " + error);
-    }
-  };
+    };
 
-  if (address) {
-    checkRegistration(address);
-  }
-}, [address]);
+    if (address) {
+      checkRegistration(address);
+    }
+  }, [address]);
 
   useEffect(() => {
     if (!address || !registeredUserEmail) {
@@ -229,10 +229,9 @@ useEffect(() => {
       // Early return to prevent further execution if the check fails.
       return;
     }
-  
+
     getUserRegisterEmail(registeredUserEmail, address);
   }, [address, registeredUserEmail]);
-
 
 
   const top = {
@@ -279,9 +278,9 @@ useEffect(() => {
     loop: true,
     autoplay: true,
     animationData: man,
-    /*rendererSettings: {
+    rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
-    },*/
+    },
   };
   const settings = {
     dots: false,
@@ -299,7 +298,7 @@ useEffect(() => {
   let sliderRef: any = useRef<any>(null);
 
   return (
-    
+
     <div className="home-main">
       <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4}>
         <GridItem colSpan={[12, 12, 12, 6, 6]}>
@@ -307,16 +306,18 @@ useEffect(() => {
             <Heading as="h1" className="syst_heding">
               Avatar system
             </Heading>
-            <Box className="avtar-systm avt_st_hi">
+
+            <Box className="avatar-system">
               <img
+                className="avatar-system-bg"
                 src="/images/avatar_system_bg.svg"
                 alt=""
-                className="avatar_system_bg"
               />
-              <Box className="loti_set">
+              <Box className="avatar-system-fg">
                 <Lottie options={manLottie}></Lottie>
               </Box>
             </Box>
+
             <Box className="five-loti-box five-loti-box_v2">
               <Box className="sem_loti_five">
                 <Heading as="h1">Thought</Heading>
@@ -373,8 +374,8 @@ useEffect(() => {
                   FEATURES
                 </Heading>
                 <Box className="all_p_sem">
-                  <Text>Wearable device </Text>
-                  <Text>Digital Identity </Text>
+                  <Text>Wearable device</Text>
+                  <Text>Digital Identity</Text>
                   <Text>Secured knowledge graph vault</Text>
                   <Text>AI + DAO Game Engine</Text>
                   <Text>IP tokenization/New NFT standard</Text>
@@ -418,17 +419,17 @@ useEffect(() => {
                     $INCENTIVES
                   </Heading>
                   <Heading as="h6" className="def_h6_c2 m_b_sem_c2">
-                      1000000
+                    1000000
                   </Heading>
                   <Text className="def_per_c2 m_b_sem_c2">
                     Registered wallets
                   </Text>
                   <Heading as="h5" className="def_h5_c2 m_b_sem_c2">
-                      {totalWallets}
+                    {totalWallets}
                   </Heading>
                   <Text className="def_per_c2 m_b_sem_c2">Your Rewards</Text>
                   <Heading as="h5" className="def_h5_c2 m_b_sem_c2">
-                      {tokensPerUser.toFixed(2)} $INCENTIVES
+                    {tokensPerUser.toFixed(2)} $INCENTIVES
                   </Heading>
                 </Box>
               </div>
@@ -441,21 +442,21 @@ useEffect(() => {
               )} */}
 
           {/* {screenType === SCREENS.REGISTERED ? (
-              
+
             ) : (
               ''
             )} */}
 
           {/* {screenType === SCREENS.EMAIL ? (
-              
+
             ) : (
               ''
             )} */}
           <Box className="join_btn_pernt">
             {slideNum === 0 && (
-            <Button onClick={moveToEmailScreen} isDisabled={alreadyRegistered}>
-            {alreadyRegistered ? 'Joined' : 'Join'}
-            </Button>
+              <Button onClick={moveToEmailScreen} isDisabled={alreadyRegistered}>
+                {alreadyRegistered ? 'Joined' : 'Join'}
+              </Button>
             )}
             {slideNum === 1 && !alreadyRegistered ? (
               <Button
@@ -478,47 +479,47 @@ useEffect(() => {
           </Box>
         </GridItem>
       </SimpleGrid>
-      <hr className="full-width-line" />
-        <div className="footer-border">
+      <hr className="full-width-line"/>
+      <div className="footer-border">
         <Box className="footer">
-        <Box className="fort_left">
-        <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
-          <img src="/images/mind_ic.svg" alt="Incentives Mind Icon" />
-        </a>
-        <Text className="footer-copyright">
-          Copyright © 2024 Incentives <br />
-          Incentives - AI Automations and blockchain
-        </Text>
+          <Box className="fort_left">
+            <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
+              <img src="/images/mind_ic.svg" alt="Incentives Mind Icon"/>
+            </a>
+            <Text className="footer-copyright">
+              Copyright © 2024 Incentives <br/>
+              Incentives - AI Automations and blockchain
+            </Text>
+          </Box>
+          <ul className="fotr_right">
+            <li>
+              <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
+                <img src="/images/social_ic01.svg" alt="X Social Icon"/>
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
+                <img src="/images/social_ic02.svg" alt="Telegram Social Icon"/>
+              </a>
+            </li>
+            <li>
+              <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/social_ic03.svg" alt="Substack Social Icon"/>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/social_ic04.svg" alt="Instagram Social Icon"/>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
+                <img src="/images/social_ic05.svg" alt="YouTube Social Icon"/>
+              </a>
+            </li>
+          </ul>
         </Box>
-        <ul className="fotr_right">
-        <li>
-          <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
-            <img src="/images/social_ic01.svg" alt="X Social Icon" />
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
-            <img src="/images/social_ic02.svg" alt="Telegram Social Icon" />
-          </a>
-        </li>
-        <li>
-          <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/social_ic03.svg" alt="Substack Social Icon" />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/social_ic04.svg" alt="Instagram Social Icon" />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
-            <img src="/images/social_ic05.svg" alt="YouTube Social Icon" />
-          </a>
-        </li>
-        </ul>
-        </Box>
-        </div>
+      </div>
     </div>
   );
 };

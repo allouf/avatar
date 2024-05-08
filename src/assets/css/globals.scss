@@ -244,27 +244,7 @@ button.cont_wallt_btn {
   padding: 40px 30px;
   padding-bottom: 0;
 }
-.avtar-systm {
-  // background: url(/images/avatar_system_bg.png) no-repeat center;
-  // background-size: cover;
-  // padding: 75px 90px 32px 90px;
-  // min-height: 899px;
-  position: relative;
-  .avatar_system_bg {
-    width: 100%;
-  }
-}
-.loti_set {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 75px 150px 32px 150px;
-}
+
 .five-loti-box {
   display: flex;
   align-items: center;
@@ -558,9 +538,6 @@ p.newAdd_txt {
   .avtr-sytm-main .syst_heding {
     letter-spacing: 13.05px;
   }
-  .loti_set {
-    padding: 55px 65px 32px 65px;
-  }
   .bordr_boxSem {
     padding: 30px 20px;
   }
@@ -694,9 +671,6 @@ p.newAdd_txt {
     letter-spacing: 3.05px;
     font-size: 24px;
   }
-  .avtar-systm .avatar_system_bg {
-    min-height: auto;
-  }
   .five-loti-box .sem_loti_five h1 {
     font-size: 18px;
   }
@@ -737,23 +711,6 @@ p.newAdd_txt {
     font-size: 20px;
   }
 }
-
-.avatar_system_bg {
-  // position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  // height: 100%;
-  width: 100%;
-}
-.avtar-systm {
-  position: relative;
-  min-height: 420px;
-}
-.bordr_boxSem.avt_st_hi {
-  min-height: 805px;
-}
 .five-loti-box_v2 {
   width: 100%;
   .sem_loti_five {
@@ -792,15 +749,6 @@ p.newAdd_txt {
   }
 }
 @media screen and (max-width: 991px) {
-  .bordr_boxSem.avt_st_hi {
-    min-height: 500px;
-  }
-  .avtar-systm .avatar_system_bg {
-    width: 100%;
-  }
-  .avtar-systm {
-    min-height: 500px;
-  }
   .human_img {
     height: 350px;
   }
@@ -808,26 +756,13 @@ p.newAdd_txt {
     margin-top: 60px;
   }
 }
-@media screen and (max-width: 767px) {
-  .bordr_boxSem.avt_st_hi {
-    min-height: 350px;
-  }
-}
+
 @media screen and (max-width: 500px) {
   .wallt_pernt {
     margin-left: 7px;
     .connect_ic {
       height: 38px;
     }
-  }
-  .bordr_boxSem.avt_st_hi {
-    min-height: 300px;
-  }
-  .avtar-systm .avatar_system_bg {
-    width: 100%;
-  }
-  .avtar-systm {
-    min-height: 350px;
   }
   .human_img {
     height: 240px;
@@ -892,7 +827,7 @@ p.newAdd_txt {
   }
 }
 .full-width-line {
-  display: none; 
+  display: none;
   position: absolute;
   left: 50%;
   right: 50%;
@@ -937,11 +872,6 @@ p.newAdd_txt {
     margin: 0;
   }
 }
-/*@media screen and (max-width: 350px) {
-  .loti_set {
-    transform: scale(1.4) translateY(-10%); 
-  }
-}*/
 .slick-initialized .slick-slide {
   padding-right: 2px;
 }
@@ -958,7 +888,7 @@ p.newAdd_txt {
     min-width: 100%; /* Ensure it spans the full width */
     box-sizing: border-box;
   }
-  
+
   /* You might also need to target Chakra UI's auto-generated classes if they have rules affecting width. */
   div[class^='css'] {
     padding: 0;
@@ -967,17 +897,22 @@ p.newAdd_txt {
     max-width: 100%;
   }
 }
-@media screen and  (max-width: 400px) {
-  .loti_set {
-    /* Combined scaling and upward movement in one transform property */
-    transform: scale(1.2) translateY(-3vh); /* A variable percentage of the viewport height */
-    transform-origin: center; /* It scales and moves up from the bottom */
+
+.avatar-system {
+  aspect-ratio: 1;
+  position: relative;
+
+  &-bg {
+    width: 100%;
+    height: 100%;
   }
-}
-@media screen and  (min-width: 400px) and  (max-width: 500px){
-  .loti_set {
-    /* Combined scaling and upward movement in one transform property */
-    transform: scale(1.2) translateY(-3vh); /* A variable percentage of the viewport height */
-    transform-origin: center; /* It scales and moves up from the bottom */
+
+  &-fg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6% 12%;
   }
 }
