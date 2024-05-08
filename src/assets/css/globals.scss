@@ -83,6 +83,17 @@ $f_secondary: "Kanit";
 $c_white: #fff;
 $error_color: #ff3333;
 
+$bp-sm-max: 479px;
+$bp-sm-min: 480px;
+$bp-md-max: 767px;
+$bp-md-min: 768px;
+$bp-lg-max: 991px;
+$bp-lg-min: 992px;
+$bp-xl-max: 1279px;
+$bp-xl-min: 1280px;
+$bp-2xl-max: 1535px;
+$bp-2xl-min: 1536px;
+
 body {
   background: radial-gradient(
       19.45% 84.8% at 11.4% 2.54%,
@@ -103,11 +114,6 @@ body {
   min-height: 100vh !important;
 }
 
-.headerInnr {
-  width: 100%;
-  padding: 15px 30px 15px 30px;
-  align-items: center;
-}
 button.toggel_btn {
   height: 50px;
   width: 50px;
@@ -118,12 +124,6 @@ button.toggel_btn {
   svg {
     color: $c_white;
   }
-}
-.hedr_width {
-  width: 100%;
-}
-.desktopNav {
-  width: 100%;
 }
 .left_hedr {
   padding: 0;
@@ -158,22 +158,30 @@ button.toggel_btn {
         color: #fff;
         text-align: center;
         font-family: $f_primary;
-        font-size: 22px !important;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
         position: absolute;
         top: 3px;
         bottom: 0;
-        right: 0px;
-        left: 90px;
+        right: 0;
+        left: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-right: 20px;
-      }
-      .vido_span {
-        top: 0;
+        padding-left: 20px;
+
+        @media screen and (max-width: $bp-xl-max) {
+            font-size: 16px;
+        }
+
+        @media screen and (min-width: $bp-xl-min) {
+          font-size: 18px;
+        }
+
+        @media screen and (min-width: $bp-2xl-min) {
+          font-size: 20xl;
+        }
       }
       .imgPernt {
         // height: 45px;
@@ -211,7 +219,6 @@ button.cont_wallt_btn {
   min-width: inherit !important;
   height: auto;
   padding: 7px 16px;
-  // margin-top: 18px;
   color: #fff;
   text-align: center;
   font-family: $f_primary;
@@ -222,7 +229,6 @@ button.cont_wallt_btn {
   width: 200px;
   white-space: nowrap;
   overflow: hidden;
-  display: inline-block;
   text-overflow: ellipsis;
   transition: all 0.2s ease-out;
   display: flex;
@@ -439,12 +445,6 @@ input.def_input {
     margin-bottom: 40px;
   }
 }
-.wallt_pernt {
-  margin-left: 35px;
-}
-.main-logo {
-  margin-right: 15px;
-}
 h1.def_h1V2 {
   margin-bottom: 35px !important;
   max-width: 589px;
@@ -461,16 +461,16 @@ p.newAdd_txt {
   line-height: 157.557%;
   margin-top: 29px;
   margin-bottom: 15px;
-  @media screen and (max-width: 1199px) {
+  @media screen and (max-width: $bp-xl-max) {
     font-size: 25px;
   }
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: $bp-lg-max) {
     font-size: 21px;
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: $bp-md-max) {
     font-size: 18px;
   }
-  @media screen and (max-width: 575px) {
+  @media screen and (max-width: $bp-sm-max) {
     font-size: 16px;
   }
   a {
@@ -482,15 +482,7 @@ p.newAdd_txt {
     }
   }
 }
-@media screen and (max-width: 1480px) and (min-width: 991px) {
-  .left_hedr li {
-    margin-right: 15px;
-  }
-  .left_hedr li .semThree_btn span {
-    font-size: 20px !important;
-  }
-}
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: $bp-2xl-max) {
   .all_p_sem p {
     font-size: 18px;
     margin-top: 12px;
@@ -512,29 +504,7 @@ p.newAdd_txt {
     font-size: 24px;
   }
 }
-@media screen and (max-width: 1280px) {
-  .left_hedr li .semThree_btn span {
-    // top: 16px;
-    font-size: 15px !important;
-  }
-}
-@media screen and (max-width: 1100px) and (min-width: 991px) {
-  .left_hedr li .semThree_btn span {
-    font-size: 16px !important;
-    left: 80px;
-  }
-  .left_hedr li .semThree_btn span {
-    top: 0px;
-  }
-  .left_hedr li .semThree_btn .center_txt {
-    top: 3px;
-  }
-  .left_hedr li .semThree_btn .vido_span {
-    top: 5px;
-  }
-  // button.cont_wallt_btn {margin-top: 0;}
-}
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: $bp-xl-max) {
   .avtr-sytm-main .syst_heding {
     letter-spacing: 13.05px;
   }
@@ -546,7 +516,7 @@ p.newAdd_txt {
   //   text-align: center;
   // }
 }
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: $bp-xl-max) {
   .innrUpFlx {
     margin: 20px 0;
   }
@@ -556,6 +526,7 @@ p.newAdd_txt {
     align-items: center;
     border-bottom: 1px solid $c_white;
     padding: 50px 0;
+    gap: 16px;
     li {
       margin-right: 0;
       margin-bottom: 20px;
@@ -586,20 +557,14 @@ p.newAdd_txt {
     margin-right: 15px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $bp-md-max) {
   .left_hedr li {
     margin-right: 15px;
-  }
-  .left_hedr li .semThree_btn span {
-    font-size: 20px !important;
   }
 
   button.toggel_btn {
     height: 40px;
     width: 40px;
-  }
-  .headerInnr {
-    padding: 15px 15px 15px 23px;
   }
   .five-loti-box .sem_loti_five h1 {
     font-size: 20px;
@@ -651,7 +616,7 @@ p.newAdd_txt {
     padding: 15px 15px;
   }
 }
-@media screen and (max-width: 575px) {
+@media screen and (max-width: $bp-sm-max) {
   h6.def_h6V2 {
     font-size: 15px !important;
     line-height: 22px !important;
@@ -662,9 +627,6 @@ p.newAdd_txt {
   .left_hedr li {
     margin-right: 15px;
     margin-left: 15px;
-  }
-  .left_hedr li .semThree_btn span {
-    font-size: 16px !important;
   }
 
   .avtr-sytm-main .syst_heding {
@@ -726,20 +688,12 @@ p.newAdd_txt {
 .bordr_boxSem_three {
   min-height: 480px !important;
 }
-.wallt_pernt {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  .connect_ic {
-    height: 48px;
-  }
-}
 
 .error {
   color: $error_color;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: $bp-2xl-max) {
   .five-loti-box .sem_loti_five h1 {
     font-size: 18px;
   }
@@ -748,7 +702,7 @@ p.newAdd_txt {
     margin-bottom: 80px;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $bp-lg-max) {
   .human_img {
     height: 350px;
   }
@@ -757,13 +711,7 @@ p.newAdd_txt {
   }
 }
 
-@media screen and (max-width: 500px) {
-  .wallt_pernt {
-    margin-left: 7px;
-    .connect_ic {
-      height: 38px;
-    }
-  }
+@media screen and (max-width: $bp-sm-max) {
   .human_img {
     height: 240px;
   }
@@ -780,11 +728,6 @@ p.newAdd_txt {
       zoom: 0.6;
     }
   }
-  .main-logo {
-    margin-right: 15px;
-    height: 52px;
-    margin-left: -10px;
-  }
 }
 
 .footer {
@@ -793,7 +736,7 @@ p.newAdd_txt {
   justify-content: space-between;
   //margin-left: -8px;
   margin-top: 12vh;
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: $bp-xl-max) {
     margin-top: 30px;
   }
 }
@@ -836,7 +779,7 @@ p.newAdd_txt {
   margin-right: -50vw; /* Same technique to push the boundary rightward */
   border-top: 2px solid #fff; /* The desired styling */
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $bp-lg-max) {
   .footer {
     width: 100%;
     max-width: 100%;
@@ -849,7 +792,7 @@ p.newAdd_txt {
     /* Now it's already positioned absolute from the setting outside the media query */
   }
 }
-@media screen and (max-width: 575px) {
+@media screen and (max-width: $bp-sm-max) {
   .footer {
     flex-direction: column;
   }
@@ -879,7 +822,7 @@ p.newAdd_txt {
   border: 1px solid $c_white;
   border-radius: 7px;
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: $bp-sm-max) {
   .home-main {
     padding: 0;
     margin: 0;
@@ -895,6 +838,36 @@ p.newAdd_txt {
     margin: 0;
     width: 100%;
     max-width: 100%;
+  }
+}
+
+.header {
+  padding: 32px;
+
+  @media screen and (max-width: $bp-md-max) {
+    padding: 16px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    padding-bottom: 0;
+  }
+
+  .mobileNav {
+    @media screen and (min-width: $bp-xl-max) {
+      display: none;
+    }
+  }
+
+  .main-logo {
+    height: 52px;
+
+    @media screen and (max-width: $bp-md-max) {
+      height: 40px;
+    }
+  }
+
+  .mobile-logo {
+    margin-top: 32px;
   }
 }
 
