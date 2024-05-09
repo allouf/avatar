@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   GridItem,
   Heading,
   Input,
@@ -21,7 +22,7 @@ import t4 from "../src/assets/img/Dodecahedron.json";
 import t5 from "../src/assets/img/Icosahedron.json";
 import man from "../public/images/rotating_3d_man_smaller.json";
 import {LocalStorageKeys, useLocalStorage} from "../helper/localstorage.hook";
-import Slider from "react-slick";
+import Slider, {Settings} from "react-slick";
 
 enum SCREENS {
   FEATURE = "feature",
@@ -89,7 +90,7 @@ const Home: NextPage = () => {
   }
 
   const moveToEmailScreen = () => {
-    sliderRef?.slickGoTo(1);
+    sliderRef.current?.slickGoTo(1);
     // setScreenType(SCREENS.EMAIL);
   };
 
@@ -282,13 +283,14 @@ const Home: NextPage = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  const settings = {
+  const settings: Settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    autoplaySpeed: 4000,
     arrows: false,
     afterChange: function (index: number) {
       setSlideNum(index);
@@ -298,12 +300,11 @@ const Home: NextPage = () => {
   let sliderRef: any = useRef<any>(null);
 
   return (
-
     <div className="home-main">
-      <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4}>
+      <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4} className="content-container">
         <GridItem colSpan={[12, 12, 12, 6, 6]}>
-          <Box className="avtr-sytm-main">
-            <Heading as="h1" className="syst_heding">
+          <Box className="avatar-system-container">
+            <Heading as="h1" className="heading">
               Avatar system
             </Heading>
 
@@ -317,148 +318,108 @@ const Home: NextPage = () => {
                 <Lottie options={manLottie}></Lottie>
               </Box>
             </Box>
-
-            <Box className="five-loti-box five-loti-box_v2">
-              <Box className="sem_loti_five">
-                <Heading as="h1">Thought</Heading>
-                <Lottie options={top} width={100} height={120}></Lottie>
-              </Box>
-              <Box className="sem_loti_five">
-                <Heading as="h1">Emotion</Heading>
-                <Lottie options={top2} width={100} height={120}></Lottie>
-              </Box>
-              <Box className="sem_loti_five">
-                <Heading as="h1">Imagination</Heading>
-                <Lottie options={top3} width={100} height={120}></Lottie>
-              </Box>
-              <Box className="sem_loti_five">
-                <Heading as="h1">Action</Heading>
-                <Lottie options={top4} width={100} height={120}></Lottie>
-              </Box>
-              <Box className="sem_loti_five">
-                <Heading as="h1">Belief</Heading>
-                <Lottie options={top5} width={100} height={120}></Lottie>
-              </Box>
-            </Box>
           </Box>
         </GridItem>
+
         <GridItem colSpan={[12, 12, 12, 6, 6]}>
           <Slider
             {...settings}
-            className="fr-brdr"
-            ref={(slider: any) => {
-              sliderRef = slider;
-            }}
+            className="slider-container"
+            ref={sliderRef}
           >
             <div>
-              <Box className="condson_box01 bordr_boxSem">
-                <Box className="innrUpFlx">
+              <Box className="slide-container">
+                <Box className="hero-logo">
                   <img
-                    src="/images/idea_engine_side_img.png"
-                    alt=""
-                    className="idea_engine_side_img"
+                    src="/images/logo.svg"
+                    alt="IDEA Engine"
+                    className="hero-logo-image"
                   />
                   <Box>
-                    <Heading as="h1" className="def_h1">
+                    <Heading as="h1" className="heading-1">
                       IDEA Engine
                     </Heading>
-                    <Heading as="h6" className="def_h6 def_h6V2">
+                    <Text className="subheading-1">
                       AI - Wearable Crypto
-                    </Heading>
-                    <Heading as="h6" className="def_h6 def_h6V2">
+                    </Text>
+                    <Text className="subheading-1">
                       Collectibles Ecosystem
-                    </Heading>
+                    </Text>
                   </Box>
                 </Box>
-                <Heading as="h2" className="def_h2">
-                  FEATURES
-                </Heading>
-                <Box className="all_p_sem">
-                  <Text>Wearable device</Text>
-                  <Text>Digital Identity</Text>
-                  <Text>Secured knowledge graph vault</Text>
-                  <Text>AI + DAO Game Engine</Text>
-                  <Text>IP tokenization/New NFT standard</Text>
-                  <Text>Marketplace</Text>
-                </Box>
+                <Flex direction="column" alignItems="center" className="slide-content">
+                  <Heading as="h2" className="heading-2">FEATURES</Heading>
+                  <Text className="paragraph">Wearable device</Text>
+                  <Text className="paragraph">Digital Identity</Text>
+                  <Text className="paragraph">Secured knowledge graph vault</Text>
+                  <Text className="paragraph">AI + DAO Game Engine</Text>
+                  <Text className="paragraph">IP tokenization/New NFT standard</Text>
+                  <Text className="paragraph">Marketplace</Text>
+                </Flex>
               </Box>
             </div>
 
-            {!alreadyRegistered ? (
-              <div>
-                <Box className="conyson_box03 bordr_boxSem avt_st_hi bordr_boxSem_three">
-                  <Heading as="h1" className="def_h1 def_h1V2">
-                    Join Our Exclusive Whitelist
-                  </Heading>
-                  {/* <Heading as="h1" className="def_h1">
-                Email
-              </Heading> */}
+            {!alreadyRegistered ? (<div>
+              <Box className="slide-container">
+                <Heading as="h1" className="heading-1 slide-content">
+                  Join Our Exclusive Whitelist
+                </Heading>
+
+                <Box className="input-container">
                   <Input
                     isInvalid={!!error}
                     errorBorderColor="red.300"
-                    className="def_input"
+                    className="input"
                     type="email"
                     placeholder="your@email.com"
                     value={email}
                     onChange={handleEmailChange}
                   />
                   <p className="error">{error}</p>
-                  <Text className="newAdd_txt">
-                    Be eligible to receive a special <a href="#">$INCENTIVES</a>{" "}
-                    Airdrop! Don't miss out on this unique opportunity to gain
-                    early access and rewards. Sign up today with your wallet to
-                    secure your spot and start benefiting!
-                  </Text>
                 </Box>
-              </div>
-            ) : (
-              <div>
-                <Box className="conyson_box02 bordr_boxSem bordr_boxSem_two">
-                  <Text className="def_per_c2 m_b_sem_c2">Airdrop</Text>
-                  <Heading as="h1" className="def_h1 m_b_sem_c2">
+                <Text className="paragraph slide-content">
+                  Be eligible to receive a special <a href="#">$INCENTIVES</a>{" "}
+                  Airdrop! Don't miss out on this unique opportunity to gain
+                  early access and rewards. Sign up today with your wallet to
+                  secure your spot and start benefiting!
+                </Text>
+              </Box>
+            </div>) : (<div>
+              <Box className="slide-container">
+                <Box className="slide-content">
+                  <Text className="subheading-1">Airdrop</Text>
+                  <Heading as="h1" className="heading-1">
                     $INCENTIVES
                   </Heading>
-                  <Heading as="h6" className="def_h6_c2 m_b_sem_c2">
+                  <Text className="stat">
                     1000000
-                  </Heading>
-                  <Text className="def_per_c2 m_b_sem_c2">
-                    Registered wallets
                   </Text>
-                  <Heading as="h5" className="def_h5_c2 m_b_sem_c2">
-                    {totalWallets}
-                  </Heading>
-                  <Text className="def_per_c2 m_b_sem_c2">Your Rewards</Text>
-                  <Heading as="h5" className="def_h5_c2 m_b_sem_c2">
-                    {tokensPerUser.toFixed(2)} $INCENTIVES
-                  </Heading>
                 </Box>
-              </div>
-            )}
+                <Box className="slide-content">
+                  <Heading as="h2" className="heading-2">
+                    Registered wallets
+                  </Heading>
+                  <Text className="stat">
+                    {totalWallets}
+                  </Text>
+                </Box>
+                <Box className="slide-content">
+                  <Heading as="h2" className="heading-2">Your Rewards</Heading>
+                  <Text className="stat">
+                    {tokensPerUser.toFixed(2)} $INCENTIVES
+                  </Text>
+                </Box>
+              </Box>
+            </div>)}
           </Slider>
-          {/* {screenType === SCREENS.FEATURE ? (
 
-            ): (
-                ''
-              )} */}
-
-          {/* {screenType === SCREENS.REGISTERED ? (
-
-            ) : (
-              ''
-            )} */}
-
-          {/* {screenType === SCREENS.EMAIL ? (
-
-            ) : (
-              ''
-            )} */}
-          <Box className="join_btn_pernt">
+          <Box className="join-button-container">
             {slideNum === 0 && (
               <Button onClick={moveToEmailScreen} isDisabled={alreadyRegistered}>
                 {alreadyRegistered ? 'Joined' : 'Join'}
               </Button>
             )}
-            {slideNum === 1 && !alreadyRegistered ? (
+            {slideNum === 1 && !alreadyRegistered && (
               <Button
                 onClick={joinWishList}
                 className={!address ? "disabled" : ""}
@@ -466,20 +427,41 @@ const Home: NextPage = () => {
               >
                 Join Whitelist
               </Button>
-            ) : (
-              ""
             )}
-            {slideNum === 1 && alreadyRegistered ? (
+            {(slideNum === 1 && alreadyRegistered) && (
               <Button className={"disabled"} isDisabled={true}>
                 Claim
               </Button>
-            ) : (
-              ""
             )}
           </Box>
         </GridItem>
       </SimpleGrid>
+
+      <Box className="five-loti-box five-loti-box_v2">
+        <Box className="sem_loti_five">
+          <Heading as="h1">Thought</Heading>
+          <Lottie options={top} width={100} height={120}></Lottie>
+        </Box>
+        <Box className="sem_loti_five">
+          <Heading as="h1">Emotion</Heading>
+          <Lottie options={top2} width={100} height={120}></Lottie>
+        </Box>
+        <Box className="sem_loti_five">
+          <Heading as="h1">Imagination</Heading>
+          <Lottie options={top3} width={100} height={120}></Lottie>
+        </Box>
+        <Box className="sem_loti_five">
+          <Heading as="h1">Action</Heading>
+          <Lottie options={top4} width={100} height={120}></Lottie>
+        </Box>
+        <Box className="sem_loti_five">
+          <Heading as="h1">Belief</Heading>
+          <Lottie options={top5} width={100} height={120}></Lottie>
+        </Box>
+      </Box>
+
       <hr className="full-width-line"/>
+
       <div className="footer-border">
         <Box className="footer">
           <Box className="fort_left">
@@ -487,7 +469,7 @@ const Home: NextPage = () => {
               <img src="/images/mind_ic.svg" alt="Incentives Mind Icon"/>
             </a>
             <Text className="footer-copyright">
-              Copyright © 2024 Incentives <br/>
+              Copyright © 2024 Incentives<br/>
               Incentives - AI Automations and blockchain
             </Text>
           </Box>

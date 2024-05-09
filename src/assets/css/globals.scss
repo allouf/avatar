@@ -13,19 +13,6 @@
   font-display: swap;
 }
 
-// @font-face {
-//   font-family: 'Kanit';
-//   src: url('../fonts/Kanit-Light.eot');
-//   src: url('../fonts/Kanit-Light.eot?#iefix') format('embedded-opentype'),
-//       url('../fonts/Kanit-Light.woff2') format('woff2'),
-//       url('../fonts/Kanit-Light.woff') format('woff'),
-//       url('../fonts/Kanit-Light.ttf') format('truetype'),
-//       url('../fonts/Kanit-Light.svg#Kanit-Light') format('svg');
-//   font-weight: 300;
-//   font-style: normal;
-//   font-display: swap;
-// }
-
 @font-face {
   font-family: "Kanit";
   src: url("../fonts/Kanit-Regular.eot");
@@ -81,8 +68,11 @@
 $f_primary: "Saira";
 $f_secondary: "Kanit";
 $c_white: #fff;
-$error_color: #ff3333;
+$c_accent: #00ffba;
+$error_color: #ffd500;
 
+$bp-xs-max: 369px;
+$bp-xs-min: 370px;
 $bp-sm-max: 479px;
 $bp-sm-min: 480px;
 $bp-md-max: 767px;
@@ -155,7 +145,7 @@ button.toggel_btn {
         top: -13px;
       }
       span {
-        color: #fff;
+        color: $c_white;
         text-align: center;
         font-family: $f_primary;
         font-style: normal;
@@ -219,7 +209,7 @@ button.cont_wallt_btn {
   min-width: inherit !important;
   height: auto;
   padding: 7px 16px;
-  color: #fff;
+  color: $c_white;
   text-align: center;
   font-family: $f_primary;
   font-size: 15px;
@@ -239,16 +229,12 @@ button.cont_wallt_btn {
     color: #fbd93c;
   }
   &:hover {
-    color: #4ca832;
-    border: 1px solid #4ca832;
+    color: $c_accent;
+    border: 1px solid $c_accent;
   }
   > div {
     gap: 0 !important;
   }
-}
-.home-main {
-  padding: 40px 30px;
-  padding-bottom: 0;
 }
 
 .five-loti-box {
@@ -266,7 +252,7 @@ button.cont_wallt_btn {
       margin-right: 0;
     }
     h1 {
-      color: #fff;
+      color: $c_white;
       font-family: $f_primary;
       font-size: 25px;
       font-style: normal;
@@ -277,122 +263,6 @@ button.cont_wallt_btn {
   }
 }
 
-.bordr_boxSem {
-  padding: 40px 40px;
-  padding-top: 0px !important;
-  // min-height: 955px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100% - 193px);
-}
-.avtr-sytm-main {
-  .syst_heding {
-    color: #fff;
-    font-family: $f_primary;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 173.9%;
-    letter-spacing: 22.05px;
-    text-align: center;
-    margin-bottom: 9px;
-  }
-}
-.innrUpFlx {
-  display: flex;
-  align-items: center;
-}
-h1.def_h1 {
-  color: $c_white;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: $f_secondary;
-  font-size: 60px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-align: center;
-}
-h6.def_h6 {
-  color: #fff;
-  font-family: $f_secondary;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 150%;
-}
-h2.def_h2 {
-  color: $c_white;
-  text-align: center;
-  font-family: $f_primary;
-  font-size: 31px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 115.4%;
-  text-decoration-line: underline;
-}
-.all_p_sem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  p {
-    color: #fff;
-    text-align: center;
-    font-family: $f_primary;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 115.4%;
-    margin-top: 37px;
-  }
-}
-.condson_box01 {
-  .def_h2 {
-    margin-top: 20px;
-  }
-}
-.join_btn_pernt {
-  display: flex;
-  padding-top: 20px;
-  padding-right: 65px;
-  padding-left: 65px;
-  margin-top: 60px;
-  button {
-    width: 100%;
-    background: transparent !important;
-    height: 62px;
-    padding: 0 20px;
-    border-radius: 32px;
-    border: 1px solid $c_white;
-    color: #fff;
-    text-align: center;
-    font-family: $f_primary;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 115.4%;
-    transition: all 0.2s ease-out;
-    max-width: 477px;
-    margin-left: auto;
-    margin-right: auto;
-    &:not([disabled]):hover {
-      color: #4ca832;
-      border: 1px solid #4ca832;
-    }
-  }
-}
-p.def_per_c2 {
-  color: $c_white;
-  text-align: center;
-  font-family: $f_primary;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 115.4%;
-}
 h6.def_h6_c2 {
   color: $c_white;
   text-align: center;
@@ -403,123 +273,13 @@ h6.def_h6_c2 {
   font-weight: 400;
   line-height: normal;
 }
-h5.def_h5_c2 {
-  color: $c_white;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: $f_primary;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-decoration-line: underline;
-}
 
-.conyson_box02 {
-  .m_b_sem_c2 {
-    margin-bottom: 18px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-input.def_input {
-  border-radius: 7px;
-  border: 1px solid $c_white;
-  color: $c_white;
-  font-family: $f_secondary;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  padding: 0 27px;
-  height: 70px;
-  outline: none !important;
-  box-shadow: none !important;
-  &::placeholder {
-    color: $c_white;
-  }
-}
-.conyson_box03 {
-  .def_h1 {
-    margin-bottom: 40px;
-  }
-}
-h1.def_h1V2 {
-  margin-bottom: 35px !important;
-  max-width: 589px;
-  margin-top: 28px;
-}
-p.newAdd_txt {
-  color: #fff;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: $f_primary;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 157.557%;
-  margin-top: 29px;
-  margin-bottom: 15px;
-  @media screen and (max-width: $bp-xl-max) {
-    font-size: 25px;
-  }
-  @media screen and (max-width: $bp-lg-max) {
-    font-size: 21px;
-  }
-  @media screen and (max-width: $bp-md-max) {
-    font-size: 18px;
-  }
-  @media screen and (max-width: $bp-sm-max) {
-    font-size: 16px;
-  }
-  a {
-    text-decoration-line: underline;
-    transition: all 0.2s ease-out;
-    &:hover {
-      color: #4ca832;
-      text-shadow: none;
-    }
-  }
-}
 @media screen and (max-width: $bp-2xl-max) {
-  .all_p_sem p {
-    font-size: 18px;
-    margin-top: 12px;
-  }
   h6.def_h6 {
     font-size: 22px;
   }
-  h1.def_h1 {
-    font-size: 45px;
-  }
-  h2.def_h2 {
-    font-size: 22px;
-  }
-  .idea_engine_side_img {
-    width: 200px;
-  }
-  .join_btn_pernt button {
-    height: 55px;
-    font-size: 24px;
-  }
 }
 @media screen and (max-width: $bp-xl-max) {
-  .avtr-sytm-main .syst_heding {
-    letter-spacing: 13.05px;
-  }
-  .bordr_boxSem {
-    padding: 30px 20px;
-  }
-  // .innrUpFlx {
-  //   flex-direction: column;
-  //   text-align: center;
-  // }
-}
-@media screen and (max-width: $bp-xl-max) {
-  .innrUpFlx {
-    margin: 20px 0;
-  }
   .left_hedr {
     flex-direction: column;
     margin: 0;
@@ -531,12 +291,6 @@ p.newAdd_txt {
       margin-right: 0;
       margin-bottom: 20px;
     }
-  }
-  .bordr_boxSem {
-    min-height: auto;
-  }
-  .idea_engine_side_img {
-    width: 100px;
   }
   .five-loti-box .sem_loti_five h1 {
     font-size: 14px;
@@ -569,108 +323,20 @@ p.newAdd_txt {
   .five-loti-box .sem_loti_five h1 {
     font-size: 20px;
   }
-  h1.def_h1 {
-    font-size: 40px;
-  }
-  h6.def_h6 {
-    font-size: 22px;
-    line-height: 30px;
-  }
-  h2.def_h2 {
-    font-size: 25px;
-  }
-  .all_p_sem p {
-    font-size: 19px;
-  }
-  .all_p_sem p {
-    margin-top: 15px;
-  }
-  .join_btn_pernt {
-    margin-top: 60px !important;
-    padding-top: 15px;
-  }
-  .join_btn_pernt button {
-    font-size: 24px;
-    font-size: 24px;
-  }
-  p.def_per_c2 {
-    font-size: 30px;
-  }
-  h6.def_h6_c2 {
-    font-size: 30px;
-  }
-  .conyson_box02 .m_b_sem_c2 {
-    margin-bottom: 20px;
-  }
   h5.def_h5_c2 {
     font-size: 30px;
   }
-  .conyson_box03 .def_h1 {
-    margin-bottom: 20px;
-  }
-  input.def_input {
-    font-size: 26px;
-    height: 60px;
-  }
-  .home-main {
-    padding: 15px 15px;
-  }
 }
 @media screen and (max-width: $bp-sm-max) {
-  h6.def_h6V2 {
-    font-size: 15px !important;
-    line-height: 22px !important;
-  }
-  .idea_engine_side_img {
-    margin-left: -37px;
-  }
   .left_hedr li {
     margin-right: 15px;
     margin-left: 15px;
   }
-
-  .avtr-sytm-main .syst_heding {
-    letter-spacing: 3.05px;
-    font-size: 24px;
-  }
   .five-loti-box .sem_loti_five h1 {
     font-size: 18px;
   }
-  .bordr_boxSem {
-    padding: 20px 15px;
-  }
-  h1.def_h1 {
-    font-size: 32px;
-  }
-  h6.def_h6 {
-    font-size: 19px;
-    line-height: 28px;
-  }
-  p.def_per_c2 {
-    font-size: 22px;
-  }
-  h6.def_h6_c2 {
-    font-size: 22px;
-  }
   h5.def_h5_c2 {
     font-size: 22px;
-  }
-  h1.def_h1 {
-    font-size: 28px;
-  }
-  input.def_input {
-    font-size: 22px;
-    height: 50px;
-  }
-  .join_btn_pernt {
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-top: 13px;
-    margin-top: 60px !important;
-  }
-  .join_btn_pernt button {
-    height: 48px;
-    font-size: 20px;
   }
 }
 .five-loti-box_v2 {
@@ -682,32 +348,15 @@ p.newAdd_txt {
 .human_img {
   width: 100%;
 }
-.bordr_boxSem_two {
-  padding-top: 20px !important;
-}
-.bordr_boxSem_three {
-  min-height: 480px !important;
-}
-
-.error {
-  color: $error_color;
-}
 
 @media screen and (max-width: $bp-2xl-max) {
   .five-loti-box .sem_loti_five h1 {
     font-size: 18px;
   }
-  .join_btn_pernt {
-    margin-top: 48px;
-    margin-bottom: 80px;
-  }
 }
 @media screen and (max-width: $bp-lg-max) {
   .human_img {
     height: 350px;
-  }
-  .join_btn_pernt {
-    margin-top: 60px;
   }
 }
 
@@ -750,7 +399,7 @@ p.newAdd_txt {
     margin-right: 11px;
   }
   p {
-    color: #fff;
+    color: $c_white;
     font-family: $f_primary;
     font-size: 14px;
     font-style: normal;
@@ -769,27 +418,13 @@ p.newAdd_txt {
     margin-left: 30px;
   }
 }
-.full-width-line {
-  display: none;
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  width: 100vw; /* Wide as the viewport */
-  margin-left: -50vw; /* Half of the viewport width, effectively making the line left aligned */
-  margin-right: -50vw; /* Same technique to push the boundary rightward */
-  border-top: 2px solid #fff; /* The desired styling */
-}
+
 @media screen and (max-width: $bp-lg-max) {
   .footer {
     width: 100%;
     max-width: 100%;
     margin-top: 60px;
     padding-top: 20px;
-  }
-
-  .full-width-line {
-    display: block; /* Show the hr */
-    /* Now it's already positioned absolute from the setting outside the media query */
   }
 }
 @media screen and (max-width: $bp-sm-max) {
@@ -813,31 +448,6 @@ p.newAdd_txt {
   }
   .fotr_right li {
     margin: 0;
-  }
-}
-.slick-initialized .slick-slide {
-  padding-right: 2px;
-}
-.fr-brdr {
-  border: 1px solid $c_white;
-  border-radius: 7px;
-}
-@media screen and (max-width: $bp-sm-max) {
-  .home-main {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    max-width: 100%; /* You probably don't need max-width, but just in case */
-    min-width: 100%; /* Ensure it spans the full width */
-    box-sizing: border-box;
-  }
-
-  /* You might also need to target Chakra UI's auto-generated classes if they have rules affecting width. */
-  div[class^='css'] {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    max-width: 100%;
   }
 }
 
@@ -871,6 +481,37 @@ p.newAdd_txt {
   }
 }
 
+.content-container {
+  padding: 32px;
+
+  @media screen and (max-width: $bp-md-max) {
+    padding: 16px;
+  }
+}
+
+.avatar-system-container {
+  .heading {
+    color: $c_white;
+    font-family: $f_primary;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 173.9%;
+    letter-spacing: 22.05px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    letter-spacing: 13.05px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    letter-spacing: 3.05px;
+    font-size: 24px;
+  }
+}
+
 .avatar-system {
   aspect-ratio: 1;
   position: relative;
@@ -887,5 +528,301 @@ p.newAdd_txt {
     align-items: center;
     justify-content: center;
     padding: 6% 12%;
+  }
+}
+
+.slider-container {
+  border: 1px solid $c_white;
+  border-radius: 8px;
+}
+
+.slide-container {
+  padding: 32px 48px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 64px;
+
+  @media screen and (max-width: $bp-2xl-max) {
+    gap: 54px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    gap: 42px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    gap: 28px;
+    padding: 24px 32px;
+  }
+}
+
+.slide-content {
+  text-align: center;
+
+  a {
+    text-decoration-line: underline;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: $c_accent;
+      text-shadow: none;
+    }
+  }
+}
+
+.hero-logo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 16px;
+
+  &-image {
+    aspect-ratio: 1;
+    height: 100%;
+  }
+}
+
+.input-container {
+  width: 100%;
+
+  .input {
+    border-radius: 8px;
+    border: 1px solid $c_white;
+    color: $c_white;
+    font-family: $f_secondary;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    padding: 8px 24px;
+    height: auto;
+    outline: none;
+    box-shadow: none;
+    text-align: center;
+
+    @media screen and (max-width: $bp-2xl-max) {
+      padding: 6px 22px;
+      font-size: 34px;
+    }
+
+    @media screen and (max-width: $bp-xl-max) {
+      padding: 4px 20px;
+      font-size: 30px;
+    }
+
+    @media screen and (max-width: $bp-xs-max) {
+      font-size: 20px;
+    }
+
+    &:focus, &:active {
+      border: 1px solid $c_accent;
+    }
+
+    &::placeholder {
+      color: $c_white;
+      opacity: 0.7;
+    }
+  }
+
+  .error {
+    color: $error_color;
+    text-align: center;
+  }
+}
+
+h1.heading-1 {
+  color: $c_white;
+  font-family: $f_secondary;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+
+  @media screen and (max-width: $bp-2xl-max) {
+    font-size: 42px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    font-size: 36px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: $bp-xs-max) {
+    font-size: 24px;
+  }
+}
+
+.subheading-1 {
+  color: $c_white;
+  font-family: $f_primary;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.4;
+
+  @media screen and (max-width: $bp-2xl-max) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: $bp-xs-max) {
+    font-size: 12px;
+  }
+}
+
+h2.heading-2 {
+  color: $c_white;
+  font-family: $f_primary;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8;
+  text-decoration-line: underline;
+
+  @media screen and (max-width: $bp-2xl-max) {
+    font-size: 36px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: $bp-xs-max) {
+    font-size: 20px;
+  }
+}
+
+.paragraph {
+  color: $c_white;
+  font-family: $f_primary;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8;
+
+  @media screen and (max-width: $bp-2xl-max) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: $bp-xs-max) {
+    font-size: 12px;
+  }
+}
+
+.stat {
+  color: $c_white;
+  font-family: $f_primary;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.8;
+
+  @media screen and (max-width: $bp-2xl-max) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    font-size: 26px;
+  }
+
+  @media screen and (max-width: $bp-sm-max) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: $bp-xs-max) {
+    font-size: 18px;
+  }
+}
+
+.join-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 64px;
+
+  @media screen and (max-width: $bp-xl-max) {
+    margin-top: 32px;
+  }
+
+  button {
+    background: transparent !important;
+    height: auto;
+    padding: 10px 40px;
+    border-radius: 32px;
+    border: 1px solid $c_white;
+    color: $c_white;
+    text-align: center;
+    font-family: $f_primary;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    transition: all 0.2s ease-out;
+    min-width: 300px;
+
+    @media screen and (max-width: $bp-xl-max) {
+      font-size: 28px;
+    }
+
+    @media screen and (max-width: $bp-sm-max) {
+      font-size: 20px;
+      width: 100%;
+      min-width: auto;
+    }
+
+    @media screen and (max-width: $bp-xs-max) {
+      font-size: 14px;
+    }
+
+    &:not([disabled]):hover {
+      color: $c_accent;
+      border: 1px solid $c_accent;
+    }
+  }
+}
+
+.full-width-line {
+  display: none;
+  width: 100%;
+  border-top: 2px solid $c_white;
+
+  @media screen and (max-width: $bp-lg-max) {
+    display: block;
+  }
+}
+
+@media screen and (max-width: $bp-sm-max) {
+  /* You might also need to target Chakra UI's auto-generated classes if they have rules affecting width. */
+  div[class^='css'] {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
   }
 }
