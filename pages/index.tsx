@@ -302,7 +302,7 @@ const Home: NextPage = () => {
   return (
     <div className="home-main">
       <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4} className="content-container">
-        <GridItem colSpan={[12, 12, 12, 6, 6]}>
+        <GridItem colSpan={[12, 12, 12, 6, 6]} order={0}>
           <Box className="avatar-system-container">
             <Text className="heading">
               Avatar system
@@ -321,7 +321,7 @@ const Home: NextPage = () => {
           </Box>
         </GridItem>
 
-        <GridItem colSpan={[12, 12, 12, 6, 6]}>
+        <GridItem colSpan={[12, 12, 12, 6, 6]} order={[2, 2, 2, 1, 1]}>
           <Slider
             {...settings}
             className="slider-container"
@@ -435,73 +435,79 @@ const Home: NextPage = () => {
             )}
           </Box>
         </GridItem>
-      </SimpleGrid>
 
-      <Box className="five-loti-box five-loti-box_v2">
-        <Box className="sem_loti_five">
-          <Heading as="h1">Thought</Heading>
-          <Lottie options={top} width={100} height={120}></Lottie>
-        </Box>
-        <Box className="sem_loti_five">
-          <Heading as="h1">Emotion</Heading>
-          <Lottie options={top2} width={100} height={120}></Lottie>
-        </Box>
-        <Box className="sem_loti_five">
-          <Heading as="h1">Imagination</Heading>
-          <Lottie options={top3} width={100} height={120}></Lottie>
-        </Box>
-        <Box className="sem_loti_five">
-          <Heading as="h1">Action</Heading>
-          <Lottie options={top4} width={100} height={120}></Lottie>
-        </Box>
-        <Box className="sem_loti_five">
-          <Heading as="h1">Belief</Heading>
-          <Lottie options={top5} width={100} height={120}></Lottie>
-        </Box>
-      </Box>
+        <GridItem hideFrom={['lg']} colSpan={12} order={[3, 3, 3, 2, 2]}>
+          <hr className="full-width-line"/>
+        </GridItem>
 
-      <hr className="full-width-line"/>
-
-      <div className="footer-border">
-        <Box className="footer">
-          <Box className="fort_left">
-            <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
-              <img src="/images/mind_ic.svg" alt="Incentives Mind Icon"/>
-            </a>
-            <Text className="footer-copyright">
-              Copyright © 2024 Incentives<br/>
-              Incentives - AI Automations and blockchain
-            </Text>
+        <GridItem colSpan={[12, 12, 12, 6, 6]} order={[1, 1, 1, 3, 3]}>
+          <Box className="shape-grid">
+            <Box className="shape-container">
+              <Text>Thought</Text>
+              <Lottie options={top}></Lottie>
+            </Box>
+            <Box className="shape-container">
+              <Text>Emotion</Text>
+              <Lottie options={top2}></Lottie>
+            </Box>
+            <Box className="shape-container">
+              <Text>Imagination</Text>
+              <Lottie options={top3}></Lottie>
+            </Box>
+            <Box className="shape-container">
+              <Text>Action</Text>
+              <Lottie options={top4}></Lottie>
+            </Box>
+            <Box className="shape-container">
+              <Text>Belief</Text>
+              <Lottie options={top5}></Lottie>
+            </Box>
           </Box>
-          <ul className="fotr_right">
-            <li>
-              <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
-                <img src="/images/social_ic01.svg" alt="X Social Icon"/>
-              </a>
-            </li>
-            <li>
-              <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
-                <img src="/images/social_ic02.svg" alt="Telegram Social Icon"/>
-              </a>
-            </li>
-            <li>
-              <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/images/social_ic03.svg" alt="Substack Social Icon"/>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
-                <img src="/images/social_ic04.svg" alt="Instagram Social Icon"/>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
-                <img src="/images/social_ic05.svg" alt="YouTube Social Icon"/>
-              </a>
-            </li>
-          </ul>
-        </Box>
-      </div>
+        </GridItem>
+
+        <GridItem colSpan={[12, 12, 12, 6, 6]} order={4}>
+          <div className="footer-border">
+            <Box className="footer">
+              <Box className="fort_left">
+                <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/mind_ic.svg" alt="Incentives Mind Icon"/>
+                </a>
+                <Text className="footer-copyright">
+                  Copyright © 2024 Incentives<br/>
+                  Incentives - AI Automations and blockchain
+                </Text>
+              </Box>
+              <ul className="fotr_right">
+                <li>
+                  <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/social_ic01.svg" alt="X Social Icon"/>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/social_ic02.svg" alt="Telegram Social Icon"/>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/social_ic03.svg" alt="Substack Social Icon"/>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/social_ic04.svg" alt="Instagram Social Icon"/>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/social_ic05.svg" alt="YouTube Social Icon"/>
+                  </a>
+                </li>
+              </ul>
+            </Box>
+          </div>
+        </GridItem>
+      </SimpleGrid>
     </div>
   );
 };
