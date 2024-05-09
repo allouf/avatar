@@ -304,9 +304,9 @@ const Home: NextPage = () => {
       <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4} className="content-container">
         <GridItem colSpan={[12, 12, 12, 6, 6]}>
           <Box className="avatar-system-container">
-            <Heading as="h1" className="heading">
+            <Text className="heading">
               Avatar system
-            </Heading>
+            </Text>
 
             <Box className="avatar-system">
               <img

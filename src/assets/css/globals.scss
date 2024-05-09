@@ -496,19 +496,20 @@ h6.def_h6_c2 {
     font-size: 30px;
     font-style: normal;
     font-weight: 400;
-    line-height: 173.9%;
-    letter-spacing: 22.05px;
+    line-height: 1.8;
+    letter-spacing: 22px;
     text-align: center;
     margin-bottom: 16px;
-  }
 
-  @media screen and (max-width: $bp-xl-max) {
-    letter-spacing: 13.05px;
-  }
+    @media screen and (max-width: $bp-xl-max) {
+      font-size: 26px;
+      letter-spacing: 13px;
+    }
 
-  @media screen and (max-width: $bp-sm-max) {
-    letter-spacing: 3.05px;
-    font-size: 24px;
+    @media screen and (max-width: $bp-sm-max) {
+      letter-spacing: 8px;
+      font-size: 20px;
+    }
   }
 }
 
