@@ -301,7 +301,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="home-main">
-      <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={4} className="content-container">
+      <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={8} className="content-container">
         <GridItem colSpan={[12, 12, 12, 6, 6]} order={0}>
           <Box className="avatar-system-container">
             <Text className="heading">
@@ -466,46 +466,44 @@ const Home: NextPage = () => {
         </GridItem>
 
         <GridItem colSpan={[12, 12, 12, 6, 6]} order={4}>
-          <div className="footer-border">
-            <Box className="footer">
-              <Box className="fort_left">
-                <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
-                  <img src="/images/mind_ic.svg" alt="Incentives Mind Icon"/>
-                </a>
-                <Text className="footer-copyright">
-                  Copyright © 2024 Incentives<br/>
-                  Incentives - AI Automations and blockchain
-                </Text>
-              </Box>
-              <ul className="fotr_right">
-                <li>
-                  <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/social_ic01.svg" alt="X Social Icon"/>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/social_ic02.svg" alt="Telegram Social Icon"/>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/social_ic03.svg" alt="Substack Social Icon"/>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/social_ic04.svg" alt="Instagram Social Icon"/>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/social_ic05.svg" alt="YouTube Social Icon"/>
-                  </a>
-                </li>
-              </ul>
+          <Box className="footer">
+            <Box className="footer-left">
+              <a href="http://www.the-incentives.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/mind_ic.svg" alt="Incentives Mind Icon"/>
+              </a>
+              <Text className="footer-copyright">
+                Copyright © 2024 Incentives<br/>
+                Incentives - AI Automations and blockchain
+              </Text>
             </Box>
-          </div>
+            <ul className="footer-right">
+              <li>
+                <a href="https://x.com/Incentives01" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/social_ic01.svg" alt="X Social Icon"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://t.me/Incentives01" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/social_ic02.svg" alt="Telegram Social Icon"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://incentives101.substack.com/" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/social_ic03.svg" alt="Substack Social Icon"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/idea_engine.ai/" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/social_ic04.svg" alt="Instagram Social Icon"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@IDEA-EngineAI" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/social_ic05.svg" alt="YouTube Social Icon"/>
+                </a>
+              </li>
+            </ul>
+          </Box>
         </GridItem>
       </SimpleGrid>
     </div>
