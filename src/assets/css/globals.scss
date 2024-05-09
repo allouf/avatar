@@ -85,24 +85,18 @@ $bp-2xl-max: 1535px;
 $bp-2xl-min: 1536px;
 
 body {
-  background: radial-gradient(
-      19.45% 84.8% at 11.4% 2.54%,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(106, 238, 198, 0) 100%
-    ),
-    radial-gradient(
-      28.24% 89.01% at 8.01% 91.89%,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(92, 241, 214, 0) 100%
-    ),
-    linear-gradient(
-      180deg,
-      #4e69ca 0%,
-      #68beef 52.6%,
-      rgba(78, 105, 202, 0.99) 100%
-    ) !important;
+  background: radial-gradient(19.45% 84.8% at 11.4% 2.54%, rgba(255, 255, 255, 0.2) 0%, rgba(106, 238, 198, 0) 100%),
+    radial-gradient(28.24% 89.01% at 8.01% 91.89%, rgba(255, 255, 255, 0.2) 0%, rgba(92, 241, 214, 0) 100%),
+    linear-gradient(180deg,#4e69ca 0%,#68beef 52.6%, rgba(78, 105, 202, 0.99) 100%) !important;
   min-height: 100vh !important;
+
+  @media screen and (max-width: $bp-lg-max) {
+    background: radial-gradient(40.45% 84.8% at 11.4% 2.54%, rgba(255, 255, 255, 0.2) 0%, rgba(106, 238, 198, 0) 100%),
+    radial-gradient(50.24% 89.01% at 8.01% 91.89%, rgba(255, 255, 255, 0.2) 0%, rgba(92, 241, 214, 0) 100%),
+    linear-gradient(180deg, #4e69ca 0%, #68beef 52.6%, rgba(78, 105, 202, 0.99) 100%) !important;
+  }
 }
+
 .left_hedr {
   padding: 0;
   margin: 0;
@@ -164,12 +158,14 @@ body {
     }
   }
 }
+
 .left_hedr li .semThree_btn svg .path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 3s normal forwards ease-in-out;
   animation-iteration-count: revert;
 }
+
 @keyframes dash {
   0% {
     stroke-dashoffset: 1000;
@@ -178,6 +174,7 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
 @keyframes scale {
   0% {
     transform: scale(0);
@@ -186,6 +183,7 @@ body {
     transform: scale(1);
   }
 }
+
 button.cont_wallt_btn {
   background: transparent !important;
   border: 1px solid $c_white;
@@ -247,11 +245,13 @@ button.cont_wallt_btn {
     margin-right: 15px;
   }
 }
+
 @media screen and (max-width: $bp-md-max) {
   .left_hedr li {
     margin-right: 15px;
   }
 }
+
 @media screen and (max-width: $bp-sm-max) {
   .left_hedr li {
     margin-right: 15px;
@@ -269,7 +269,6 @@ button.cont_wallt_btn {
   @media screen and (max-width: $bp-sm-max) {
     padding-bottom: 0;
   }
-
 
   button.menu-button {
     height: 50px;
