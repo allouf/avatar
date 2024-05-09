@@ -103,18 +103,6 @@ body {
     ) !important;
   min-height: 100vh !important;
 }
-
-button.toggel_btn {
-  height: 50px;
-  width: 50px;
-  background: transparent !important;
-  padding: 0;
-  border: 1px solid $c_white;
-  border-radius: 8px;
-  svg {
-    color: $c_white;
-  }
-}
 .left_hedr {
   padding: 0;
   margin: 0;
@@ -160,21 +148,17 @@ button.toggel_btn {
         align-items: center;
         justify-content: center;
         padding-left: 20px;
+        font-size: 20px;
+
+        @media screen and (max-width: $bp-2xl-max) {
+          font-size: 18px;
+        }
 
         @media screen and (max-width: $bp-xl-max) {
             font-size: 16px;
         }
-
-        @media screen and (min-width: $bp-xl-min) {
-          font-size: 18px;
-        }
-
-        @media screen and (min-width: $bp-2xl-min) {
-          font-size: 20xl;
-        }
       }
       .imgPernt {
-        // height: 45px;
         object-fit: contain;
       }
     }
@@ -263,22 +247,6 @@ button.cont_wallt_btn {
   }
 }
 
-h6.def_h6_c2 {
-  color: $c_white;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: $f_secondary;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-@media screen and (max-width: $bp-2xl-max) {
-  h6.def_h6 {
-    font-size: 22px;
-  }
-}
 @media screen and (max-width: $bp-xl-max) {
   .left_hedr {
     flex-direction: column;
@@ -315,16 +283,8 @@ h6.def_h6_c2 {
   .left_hedr li {
     margin-right: 15px;
   }
-
-  button.toggel_btn {
-    height: 40px;
-    width: 40px;
-  }
   .five-loti-box .sem_loti_five h1 {
     font-size: 20px;
-  }
-  h5.def_h5_c2 {
-    font-size: 30px;
   }
 }
 @media screen and (max-width: $bp-sm-max) {
@@ -335,9 +295,6 @@ h6.def_h6_c2 {
   .five-loti-box .sem_loti_five h1 {
     font-size: 18px;
   }
-  h5.def_h5_c2 {
-    font-size: 22px;
-  }
 }
 .five-loti-box_v2 {
   width: 100%;
@@ -345,25 +302,13 @@ h6.def_h6_c2 {
     margin: 0;
   }
 }
-.human_img {
-  width: 100%;
-}
-
 @media screen and (max-width: $bp-2xl-max) {
   .five-loti-box .sem_loti_five h1 {
     font-size: 18px;
   }
 }
-@media screen and (max-width: $bp-lg-max) {
-  .human_img {
-    height: 350px;
-  }
-}
 
 @media screen and (max-width: $bp-sm-max) {
-  .human_img {
-    height: 240px;
-  }
   .five-loti-box .sem_loti_five h1 {
     font-size: 20px;
   }
@@ -460,6 +405,25 @@ h6.def_h6_c2 {
 
   @media screen and (max-width: $bp-sm-max) {
     padding-bottom: 0;
+  }
+
+
+  button.menu-button {
+    height: 50px;
+    width: 50px;
+    background: transparent !important;
+    padding: 0;
+    border: 1px solid $c_white;
+    border-radius: 8px;
+
+    @media screen and (max-width: $bp-md-max){
+      height: 40px;
+      width: 40px;
+    }
+
+    svg {
+      color: $c_white;
+    }
   }
 
   .mobileNav {

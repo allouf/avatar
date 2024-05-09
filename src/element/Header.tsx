@@ -24,7 +24,7 @@ export default function Header() {
           display={{base: 'flex', xl: 'none'}}
         >
           <IconButton
-            className='toggel_btn'
+            className='menu-button'
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={4} h={4}/> : <HamburgerIcon w={7} h={7}/>
