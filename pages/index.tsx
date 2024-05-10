@@ -473,7 +473,8 @@ const Home: NextPage = () => {
               </a>
               <Text className="footer-copyright">
                 Copyright © 2024 Incentives<br/>
-                Incentives - AI Automations and blockchain
+                Incentives - AI Automations and blockchain<br/>
+                <a href="mailto:sales@idea-engine.ai">sales@idea-engine.ai</a>
               </Text>
             </Box>
             <ul className="footer-right">
