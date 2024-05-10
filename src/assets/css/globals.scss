@@ -141,7 +141,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-left: 20px;
+        padding-left: 16px;
         font-size: 20px;
 
         @media screen and (max-width: $bp-2xl-max) {
@@ -150,6 +150,10 @@ body {
 
         @media screen and (max-width: $bp-xl-max) {
             font-size: 16px;
+        }
+
+        @media screen and (min-width: $bp-lg-min) {
+          padding-left: 52px;
         }
       }
       .imgPernt {
