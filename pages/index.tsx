@@ -321,7 +321,7 @@ const Home: NextPage = () => {
           </Box>
         </GridItem>
 
-        <GridItem colSpan={[12, 12, 12, 6, 6]} order={[2, 2, 2, 1, 1]}>
+        <GridItem colSpan={[12, 12, 12, 6, 6]} order={[2, 2, 2, 1, 1]} className="join-section">
           <Slider
             {...settings}
             className="slider-container"

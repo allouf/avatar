@@ -395,9 +395,20 @@ button.cont_wallt_btn {
   }
 }
 
+.join-section {
+  @media screen and (min-width: $bp-lg-min){
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .slider-container {
   border: 1px solid $c_white;
   border-radius: 8px;
+
+  @media screen and (min-width: $bp-lg-min){
+    flex-grow: 1;
+  }
 }
 
 .slide-container {
