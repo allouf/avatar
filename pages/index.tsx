@@ -378,7 +378,7 @@ const Home: NextPage = () => {
                   <p className="error">{error}</p>
                 </Box>
                 <Text className="paragraph slide-content">
-                  Be eligible to receive a special <a href="#">$INCENTIVES</a>{" "}
+                  Be eligible to receive a special $INCENTIVES
                   Airdrop! Don't miss out on this unique opportunity to gain
                   early access and rewards. Sign up today with your wallet to
                   secure your spot and start benefiting!
