@@ -156,7 +156,7 @@ export default function Header() {
               </Button>
             </li>
             <li>
-              <Button as='a' href='/' className='semThree_btn'>
+              <Button as='a' href='https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view' className='semThree_btn'>
                 <svg
                   width='40'
                   height='17'
