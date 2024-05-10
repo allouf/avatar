@@ -37,7 +37,7 @@ export default function Header() {
         <Flex display={{base: 'none', xl: 'flex'}} flex={{base: 1}} justify={{base: 'center'}}>
           <ul className='left_hedr'>
             <li>
-              <Button as='a' href='/' className='semThree_btn'>
+              <Button as='a' href='https://drive.google.com/file/d/1ATKL3R39jqFqxYX6fwBuFPCjmUEO341N/view' className='semThree_btn'>
                 <svg
                   width='40'
                   height='17'
@@ -133,7 +133,7 @@ export default function Header() {
         <Box className='mobileNav'>
           <ul className='left_hedr'>
             <li>
-              <Button as='a' href='/' className='semThree_btn'>
+              <Button as='a' href='https://drive.google.com/file/d/1ATKL3R39jqFqxYX6fwBuFPCjmUEO341N/view' className='semThree_btn'>
                 <svg
                   width='40'
                   height='17'
