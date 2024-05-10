@@ -439,7 +439,8 @@ button.cont_wallt_btn {
 
 .hero-logo {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto;
+  align-content: center;
   grid-gap: 16px;
 
   &-image {
