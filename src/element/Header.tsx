@@ -96,7 +96,9 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <Button as='a' href='/' className='semThree_btn'>
+            <a href="https://youtu.be/QHagYTbZS9Q" target="_blank"
+                 rel="noopener noreferrer">
+              <Button className='semThree_btn'>
                 <svg
                   width='40'
                   height='17'
@@ -120,8 +122,9 @@ export default function Header() {
                 </svg>
                 <img src='/images/menu-ic03.svg' alt='' className='menu-ic'/>
                 <img src='/images/video_img.svg' alt='' className='imgPernt'/>
-                <span>Video</span>
+                <span>Initial Demo</span>
               </Button>
+              </a>
             </li>
           </ul>
         </Flex>
@@ -179,7 +182,7 @@ export default function Header() {
               </Button>
             </li>
             <li>
-              <Button as='a' href='/' className='semThree_btn'>
+            <Button as='a' href='https://youtu.be/QHagYTbZS9Q' className='semThree_btn'>
                 <svg
                   width='40'
                   height='17'
@@ -198,7 +201,7 @@ export default function Header() {
                 </svg>
                 <img src='/images/menu-ic03.svg' alt='' className='menu-ic'/>
                 <img src='/images/video_img.svg' alt='' className='imgPernt'/>
-                <span>Video</span>
+                <span>Initial Demo</span>
               </Button>
             </li>
           </ul>
