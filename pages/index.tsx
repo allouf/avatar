@@ -349,14 +349,12 @@ const Home: NextPage = () => {
                 </Box>
                 <Flex direction="column" alignItems="center" className="slide-content">
                   <Heading as="h2" className="heading-2">FEATURES</Heading>
-                  <Text className="paragraph">Digital Identity with custom needs on wearable device (Android wear &  Apple WatchOS)</Text>
-                  <Text className="paragraph">Continues expansion of user's notes. (User's will receive rewards by taking notes on a platform)</Text>
-                  <Text className="paragraph">Task management + AI Guide recommendations, advices, questions, instructions, on wearable.</Text>
-                  <Text className="paragraph">Activity tracking,  mood tracking, analytics for life management.</Text>
-                  <Text className="paragraph">Infinite loop of automated prompting (User's note variables + AI prompts) </Text>
-                  <Text className="paragraph">ZK Crypto Collectibles : Secure peer-to-peer data exchanges without revealing content, ensuring complete privacy and data protection.</Text>
-                  <Text className="paragraph">Marketplace for gamified AI agents & ZK wearable crypto collectibles (Heroes, Guides, Villains, Quests, Mini-games/NFTs)</Text>
-                  <Text className="paragraph">Utility creation for token developers or content creators (AI + DAO pools) (Buy/Sell Quests, Heroes, Guides, Villains, Mini-games/NFTs with your desired crypto currency)</Text>
+                  <Text className="paragraph">Wearable device</Text>
+                  <Text className="paragraph">Digital Identity</Text>
+                  <Text className="paragraph">Secured knowledge graph vault</Text>
+                  <Text className="paragraph">AI + DAO Game Engine</Text>
+                  <Text className="paragraph">IP tokenization/New NFT standard</Text>
+                  <Text className="paragraph">Marketplace</Text>
                 </Flex>
               </Box>
             </div>
