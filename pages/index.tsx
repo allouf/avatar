@@ -50,6 +50,37 @@ const Home: NextPage = () => {
 
   const [registeredUserEmail, setRegisteredUserEmail] = useState(getItem());
 
+  const titles = [
+    'Avatar system',
+    'Cryptocurrency',
+    'ZK NFTs',
+    'Wearable device',
+  ];
+  
+  const SlidingTitle = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentTitle, setCurrentTitle] = useState(titles[0]);
+  
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setCurrentIndex(prevIndex => {
+          const newIndex = (prevIndex + 1) % titles.length;
+          setCurrentTitle(titles[newIndex]);
+          return newIndex;
+        });
+      }, 1000); // 1 second interval
+  
+      return () => clearInterval(intervalId);
+    }, []);
+  
+    // Return the current title wrapped in a React element
+    return (
+      <Text className="heading">
+        {currentTitle}
+      </Text>
+    );
+  }; 
+
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const emailValue = event.target?.value || "";
     setEmail(emailValue);
@@ -304,9 +335,7 @@ const Home: NextPage = () => {
       <SimpleGrid columns={12} columnGap={[2, 4, 6, 6]} rowGap={8} className="content-container">
         <GridItem colSpan={[12, 12, 12, 6, 6]} order={0}>
           <Box className="avatar-system-container">
-            <Text className="heading">
-              Avatar system
-            </Text>
+          <SlidingTitle />
 
             <Box className="avatar-system">
               <img
