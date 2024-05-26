@@ -378,12 +378,8 @@ const Home: NextPage = () => {
                 </Box>
                 <Flex direction="column" alignItems="center" className="slide-content">
                   <Heading as="h2" className="heading-2">FEATURES</Heading>
-                  <Text className="paragraph">Wearable device</Text>
-                  <Text className="paragraph">Digital Identity</Text>
-                  <Text className="paragraph">Secured knowledge graph vault</Text>
-                  <Text className="paragraph">AI + DAO Game Engine</Text>
-                  <Text className="paragraph">IP tokenization/New NFT standard</Text>
-                  <Text className="paragraph">Marketplace</Text>
+                  <Text className="paragraph">ZK Crypto Collectibles: Secure peer-to-peer data exchanges without revealing content, ensuring complete privacy and data protection.</Text>
+                  <Text className="paragraph">Marketplace for gamified AI agents & ZK wearable crypto collectibles (Heroes, Guides, Villains, Quests, Mini-games/NFTs)</Text>
                 </Flex>
               </Box>
             </div>

@@ -768,3 +768,48 @@ h2.heading-2 {
     max-width: 100%;
   }
 }
+
+.slide-content {
+  text-align: center;
+  padding: 0 1rem; // Add padding on the left and right
+  max-width: 1200px; // Maximum width of the content
+  margin: 0 auto; // Center the content block
+
+  a {
+    text-decoration-line: underline;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: $c_accent;
+      text-shadow: none;
+    }
+  }
+}
+
+.paragraph {
+  color: $c_white;
+  font-family: $f_primary;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8;
+  margin-bottom: 1rem; // Add some space between paragraphs
+  text-align: justify;
+  text-justify: inter-word; // This ensures that spacing is added between words for justification
+
+  @media screen and (max-width: $bp-2xl-max) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: $bp-xl-max) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: $bp-xs-max) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: $bp-sm-max) {
+    font-size: 16px;
+    text-align: left; // Align text to the left on small screens
+  }
+}
