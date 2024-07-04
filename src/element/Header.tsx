@@ -65,7 +65,7 @@ export default function Header() {
               </Button>
             </li>
             <li>
-              <a href="https://drive.google.com/file/d/1T6bpbDiCWZUJajg5yhXUPmy1VwnQKc_R/view?usp=sharing" target="_blank"
+              <a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view " target="_blank"
                  rel="noopener noreferrer">
                 <Button className='semThree_btn'>
                   <svg
@@ -159,7 +159,7 @@ export default function Header() {
               </Button>
             </li>
             <li>
-              <Button as='a' href='https://drive.google.com/file/d/1T6bpbDiCWZUJajg5yhXUPmy1VwnQKc_R/view?usp=sharing' className='semThree_btn'>
+              <Button as='a' href='https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view' className='semThree_btn'>
                 <svg
                   width='40'
                   height='17'
