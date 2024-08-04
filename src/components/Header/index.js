@@ -21,7 +21,7 @@ export default function Header() {
         <div className='container'>
         <div className='flex justify-between items-center'>
           <div className='logo  sm:w-40 lg:w-auto'>
-            <Image src={logo} />
+            <Image src={logo} alt="Logo image"/>
           </div>
           <div className='headerDefault headerMenu py-2 xl:py-5 xl:px-16 xl:px-16 md:px-6 sm:px-3'>
             <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
@@ -45,38 +45,19 @@ export default function Header() {
             <div className='header-btn py-1.5 lg:py-2 px-3 xl:py-3.5 lg:px-4 md:px-2 text-white Oxanium '><a href="#" className='font-bold'>Connect Wallet</a></div>
             <div className='right-line h-4 w-0.5'></div>
             <div className='profile-img hidden pr-2'>
-              <Image src={profile} />
+              <Image src={profile} alt="Profile image"/>
             </div>
             <input type='checkbox' id='check'></input>
             <label for="check" className='checkbtn block sm:hidden pl-4'>
               <div className='menu-icon pr-3' onClick={()=>{
                 setHeaderOpen(!headerOpen)
               }}>
-                <Image src={menuicon} />  
+                <Image src={menuicon} alt="Menu image"/>  
               </div>
             </label>
           </div>
         </div>
         </div>
-         {/* Google tag (gtag.js) */}
-         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-L081D7QTKT"></Script>
-      <Script>
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-  
-            gtag('config', 'G-L081D7QTKT');
-          `}
-      </Script>
-      <script>
-        {`
-      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-      a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-      twq('config','omklf');
-      `}
-      </script>
       </header>
 
 
