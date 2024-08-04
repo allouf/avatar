@@ -105,18 +105,24 @@ export default function Header() {
         <p>© Copyright © 2024 Incentives  Incentives - AI Automations and blockchain sales@idea-engine.ai</p>
       </div>
    </footer> */}
-   {/* Google tag (gtag.js) */}
-<Script async src="https://www.googletagmanager.com/gtag/js?id=G-L081D7QTKT" />
-<Script id="google-analytics">
-  {
-    `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{/* Google tag (gtag.js) */}
+<Script id="google-analytics-script" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', 'G-L081D7QTKT');
-    `
-  }
+    gtag('config', 'G-L081D7QTKT');
+  `}
+</Script>
+
+<Script id="twitter-tracking-script" strategy="afterInteractive">
+  {`
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    twq('config','omklf');
+  `}
 </Script>
     </>
   );
