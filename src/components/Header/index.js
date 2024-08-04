@@ -24,7 +24,7 @@ export default function Header() {
           </div>
           <div className='headerDefault headerMenu py-2 xl:py-5 xl:px-16 xl:px-16 md:px-6 sm:px-3'>
             <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
-              <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>White-paper</a></li>
+              <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='menu-links uppercase'>White-paper</a></li>
               <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a></li>
               <li><a href="#" className='menu-links uppercase'>INITIAL DEMO</a></li>
             </ul>
@@ -33,7 +33,7 @@ export default function Header() {
           
           <div className='headerResponsive headerMenu py-2 xl:px-16 xl:px-16 md:px-6 sm:px-3'>
             <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
-              <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>White-paper</a></li>
+              <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='menu-links uppercase'>White-paper</a></li>
               <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a></li>
               <li><a href="#" className='menu-links uppercase'>INITIAL DEMO</a></li>
             </ul>
