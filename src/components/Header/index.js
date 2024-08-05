@@ -25,24 +25,26 @@ export default function Header() {
           </div>
           <div className='headerDefault headerMenu py-2 xl:py-5 xl:px-16 xl:px-16 md:px-6 sm:px-3'>
             <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
-              <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='menu-links uppercase'>White-paper</a></li>
+              <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='menu-links uppercase'>White paper</a></li>
               <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a></li>
-              <li><a href="#" className='menu-links uppercase'>INITIAL DEMO</a></li>
+              <li><a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a></li>
             </ul>
           </div>
           {headerOpen &&
           
           <div className='headerResponsive headerMenu py-2 xl:px-16 xl:px-16 md:px-6 sm:px-3'>
             <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
-              <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='menu-links uppercase'>White-paper</a></li>
+              <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='menu-links uppercase'>White paper</a></li>
               <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a></li>
-              <li><a href="#" className='menu-links uppercase'>INITIAL DEMO</a></li>
+              <li><a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a></li>
             </ul>
           </div>
           }
           <div className='headerbtn-box flex items-center lg:gap-3 md:gap-1'>
             <div className='left-line h-4 w-0.5 bg-black'></div>
-            <div className='header-btn py-1.5 lg:py-2 px-3 xl:py-3.5 lg:px-4 md:px-2 text-white Oxanium '><a href="#" className='font-bold'>Connect Wallet</a></div>
+            <div className='header-btn py-1.5 lg:py-2 px-3 xl:py-3.5 lg:px-4 md:px-2 text-white Oxanium '>
+              <a href="#" className='font-bold disabled-btn'>Connect Wallet</a>
+            </div>
             <div className='right-line h-4 w-0.5'></div>
             <div className='profile-img hidden pr-2'>
               <Image src={profile} alt="Profile image"/>
