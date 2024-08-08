@@ -35,7 +35,7 @@ export default function Header() {
                   <a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a>
                 </li>
                 <li>
-                  <a href="#" className='menu-links uppercase'>INITIAL DEMO</a>
+                  <a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a>
                 </li>
               </ul>
             </motion.div>
@@ -49,7 +49,7 @@ export default function Header() {
                     <a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a>
                   </li>
                   <li>
-                    <a href="#" className='menu-links uppercase'>INITIAL DEMO</a>
+                    <a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a>
                   </li>
                 </ul>
               </div>
