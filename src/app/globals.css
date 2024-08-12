@@ -204,7 +204,8 @@ button.relative {
 }
 @media(max-width:767px) {
   .container {
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 }
 @media (min-width:340px) and (max-width:640px) {
