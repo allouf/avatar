@@ -42,7 +42,7 @@ export default function PrivateSale({ onClose }) {
           </div>
         </div>
       ) : (
-        <Completed onClose={onClose} text='Your email has been registered!' />
+        <Completed onClose={onClose} text='Email with instructions will be sent shortly!' />
       )}
     </>
   );
