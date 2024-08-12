@@ -9,11 +9,12 @@ import animationData from '../../lotties/man';
 import lottieBg from '../../../public/assets/lottie-bg.webp';
 import PrivateSale from '@/components/popups/privateSale';
 import JoinWhitelist from '@/components/popups/joinWhitelist';
+import Completed from '@/components/popups/completed';
 
 export default function FirstSection() {
   const [privateSale, setPrivateSaleVisible] = useState(false);
   const [joinWhitelist, setJoinWhitelistVisible] = useState(false);
-  const [completed, setCompletedVisible] = useState(false);
+  const [completed, setCompletedPopupVisible] = useState(false);
 
   useEffect(() => {
     if (privateSale || joinWhitelist || completed) {
@@ -28,17 +29,25 @@ export default function FirstSection() {
 
   const togglePopup1 = () => setPrivateSaleVisible(!privateSale);
   const togglePopup2 = () => setJoinWhitelistVisible(!joinWhitelist);
-
+  const hideJoinWhitelistVisible = () => setJoinWhitelistVisible(false);
+  
+  const showCompletedPopup = () => setCompletedPopupVisible(true);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    hideJoinWhitelistVisible();
+    showCompletedPopup();
+  };
   return (
     <>
+    
       {privateSale && (
-        <PrivateSale onClose={togglePopup1} />
+        <PrivateSale onSubmit={handleSubmit}  onClose={togglePopup1} />
       )}
     
       {joinWhitelist && (
-        <JoinWhitelist onClose={togglePopup2} />
+        <JoinWhitelist onSubmit={handleSubmit} onClose={togglePopup2} />
       )}
-    
+ 
      
 
     <div className='container xl:mb-32'>
@@ -71,8 +80,8 @@ export default function FirstSection() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className='flex items-center md:items-start md:justify-start my-10 md:mb-0 xl:mt-20'
           >
-            <Button  title="Private Sale" />
-            <Button  title="White List" />
+            <Button clickEvent={togglePopup1} title="Private Sale" />
+            <Button clickEvent={togglePopup2} title="White List" />
           </motion.div>
         </motion.div>
         <motion.div

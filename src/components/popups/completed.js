@@ -4,7 +4,7 @@ import Cross  from '../../../public/assets/cross.svg'
 import './popup.css';
 
 
-export default function Completed({onCloseCompleted, text}) {
+export default function Completed({onClose, text}) {
     return(
         <div className="Completed Oxanium text-center popup">
             <div className="container relative">
@@ -14,7 +14,7 @@ export default function Completed({onCloseCompleted, text}) {
                   alt="Close" 
                   width={24}
                   height={24}
-                  onClick={onCloseCompleted} 
+                  onClick={onClose} 
                   style={{ cursor: 'pointer' }} // Make it look clickable
                 />
               </div>
