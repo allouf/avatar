@@ -186,7 +186,7 @@ export default function Home() {
             <Image style={{ top: '-22%' }} className="w-[50%] hidden md:block absolute left-0" src={roadMapBg} />
             <gradientcontainer className="relative z-2">
               <SecondSection
-                preTitle={"IDEA Token Supply"}
+                preTitle={"IDEA Engine: AI wearable Crypto collectibles ecosystem"}
                 titleText={"Roadmap"}
                 sectionImg={fifthImage}
                 responsiveImage={fifthImageResponsive}
