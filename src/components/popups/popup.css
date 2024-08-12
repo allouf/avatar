@@ -4,7 +4,7 @@
     width:90% ;
     margin: auto;
     max-width: 690px;
-    border-radius: 32px;
+    border-radius: 12px;
     background: linear-gradient(180deg, #191A1C 0%, #000 100%);
     box-shadow: 0px 3px 14px 0px rgba(74, 58, 255, 0.03), 0px -2px 4px 0px rgba(20, 20, 43, 0.12), 0px 12px 44px 0px rgba(20, 20, 43, 0.34);
 }
@@ -12,7 +12,7 @@
     width:90% ;
     max-width: 825px;
     margin: auto;
-    border-radius: 16px;
+    border-radius: 12px;
     background: linear-gradient(180deg, #191A1C 0%, #000 100%);
     box-shadow: 0px 3px 14px 0px rgba(74, 58, 255, 0.03), 0px -2px 4px 0px rgba(20, 20, 43, 0.12), 0px 12px 44px 0px rgba(20, 20, 43, 0.34);
 }
@@ -24,13 +24,11 @@
 .emailButton {
     font-family: "DM Sans";
     min-width:120px;
-    border-radius: 20px;
+    border-radius: 12px;
 
 }
 
-.popText {
-    max-width: 493px;
-}
+
 
 .JoinWhitelist .popText {
     max-width: 360px;
@@ -70,5 +68,18 @@
     }
     .emailButton {
         border-radius: 56px;
+    }
+    .popText {
+        max-width: 493px;
+    }
+    .PrivateSale .popup-content {
+        border-radius: 32px;
+    }
+    .JoinWhitelist .popup-content  {
+        border-radius: 32px;
+    }
+    .emailButton {
+        border-radius: 20px;
+    
     }
 }
