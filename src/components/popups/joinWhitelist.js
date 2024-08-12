@@ -35,7 +35,7 @@ export default function JoinWhitelist({ onClose }) {
               </div>
               <div className='lg:ps-24'>
                 <h3 className='text-xl sm:text-3xl md:text-4xl pt-5 pb-2 md:py-5 font-bold'>Join Our Whitelist</h3>
-                <p className='popText font-normal text-xs sm:text-smmd:text-lg'>Fill your email below to join our whitelist today!</p>
+                <p className='popText font-normal text-xs sm:text-sm md:text-lg'>Fill your email below to join our whitelist today!</p>
                 <form onSubmit={handleSubmit}>
                   <input 
                     className='text-xs sm:text-sm emailInput text-black bg-white mt-5 md:mt-10 py-3 md:py-4 px-5 w-full mb-2 md:mb-5' 
