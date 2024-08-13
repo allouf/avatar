@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
       <div className='mb-10 md:mb-auto h-max xl:w-2/3 left-0 right-0 md:absolute m-auto top-0 bottom-0 footer-content grid text-center xl:flex items-center lg:justify-around  flex-col gap-8 sm:gap-6 lg:gap-6 xl:gap-8 md:flex-row'>
         <div>
-        <ul className='flex justify-center footer-list gap-6 xl:gap-10 md:gap-4 lg:gap-6'>
+        <ul className='flex justify-center footer-list gap-4 lg:gap-6 xl:gap-10'>
             <li><a href="https://drive.google.com/file/d/1RIWTy-9n44FQrPax0Ff27quyrml26uKk/view?usp=sharing" className='text-xs md:text-sm uppercase footer-gray-text'>White paper</a></li>
             <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='text-xs md:text-sm uppercase footer-gray-text'>VISUAL NOVEL</a></li>
             <li><a href="#" className='menu-links uppercase disabled-link' onClick={(e) => e.preventDefault()}>INITIAL DEMO</a></li>
@@ -37,7 +37,6 @@ export default function Footer() {
         <div className='md:flex gap-4 align-center justify-center'>
         <a href="#" className='text-sm  mb-5 md:mb-0 block  align-center follow-us uppercase text-white'>Follow us</a>
         <div className='flex justify-center gap-6 align-center'>
-
           <a className='footer-social' href="https://x.com/Incentives01"><Image src='https://www.idea-engine.ai/images/social_ic01.svg' width={20} height={20} /></a>
           <a className='footer-social' href="https://t.me/idea_engine_ai"><Image src='https://www.idea-engine.ai/images/social_ic02.svg' width={20} height={20} /></a>
           <a className='footer-social' href="https://incentives101.substack.com/"><Image src='https://www.idea-engine.ai/images/social_ic03.svg' width={20} height={20} /></a>
