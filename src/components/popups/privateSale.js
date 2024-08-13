@@ -36,8 +36,8 @@ export default function PrivateSale({ onClose }) {
             <form 
              className='emailForm flex justify-between bg-white mt-10 py-1.5 sm:py-2.5 md:py-3 ps-3 pe-1 sm:px-3 md:px-5' 
              onSubmit={handleSubmit}>
-              <input type="email" className='sm:text-sm md:text-lg text-xs outline-0 w-1/2 text-black' placeholder='Enter your email' required />
-              <button type="submit" className='md:w-2/ bg-black py-2 sm:py-3 md:px-6 emailButton sm:text-sm md:text-lg text-xs'>Get Tokens</button>
+              <input type="email" className='sm:text-sm md:text-lg text-xs outline-0 w-full text-black' placeholder='Enter your email' required />
+              <button type="submit" className='md:w-2/4 bg-black py-2 sm:py-3 md:px-6 emailButton sm:text-sm md:text-lg text-xs'>Get Tokens</button>
             </form>
           </div>
         </div>
