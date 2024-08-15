@@ -349,11 +349,9 @@ button2:hover::after {
   background: none;
   padding: 0;
   margin: 0;
-  width: auto;
   height: auto;
   box-shadow: none;
   outline: none;
-  font: inherit;
   color: inherit;
   text-align: inherit;
 }
