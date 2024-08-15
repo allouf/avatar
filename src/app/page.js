@@ -46,7 +46,9 @@ export default function Home() {
       };
     }
   }, []);
-  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -193,25 +195,27 @@ export default function Home() {
               />
             </gradientcontainer>
           </div>
+          
           <h4 className="text-white text-2xl md:text-4xl xl:text-5xl mb-5 lg:mb-10 Oxanium md:mt-10 font-bold">
             Join Whitelist
           </h4>
           <div className="px-2 w-full">
-            <div className="w-[95%] mx-auto sm:w-[400px] xl:w-[680px] lg:w-[400px] flex-wrap justify-between flex px-2 py-1 xl:py-3 md:pl-7 rounded-[7px] border text-white border-[#5991ff] ">
+            <form onSubmit={handleSubmit} className="w-[95%] mx-auto sm:w-[400px] xl:w-[680px] lg:w-[400px] flex-wrap justify-between flex px-2 py-1 xl:py-3 md:pl-7 rounded-[7px] border text-white border-[#5991ff] ">
               <input className="py-4 sm:w-auto  bg-opacity-0 reset-input "
                 type="email"
                 id="email"
                 name="email"
                 placeholder="Enter your email"
               />
-              <div className="w-10 md:w-12 md:ml-10 cursor-pointer">
+              <button className="w-10 md:w-12 md:ml-10 cursor-pointer">
                 <Image src={subscribe} />
-              </div>
-            </div>
+              </button>
+            </form>
           </div>
           <Footer />
           <div className="fixed bottom-8 right-8 z-10">
             <button
+              type="submit"
               onClick={scrollToTop}
               className="flex items-center justify-center w-12 h-12 bg-gray-800 rounded-full shadow-md hover:bg-gray-700 transition"
             >
