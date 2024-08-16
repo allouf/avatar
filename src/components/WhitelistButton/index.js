@@ -8,7 +8,7 @@ const WhitelistButton = ({ walletAddress }) => {
       alert('Both email and wallet address are required.');
       return;
     }
-
+  
     const response = await fetch('/api/joinWhitelist', {
       method: 'POST',
       headers: {
@@ -16,13 +16,17 @@ const WhitelistButton = ({ walletAddress }) => {
       },
       body: JSON.stringify({ walletId: walletAddress, email }),
     });
-
+  
     if (!response.ok) {
       const errorData = await response.json();
-      alert(`Error: ${errorData.message}`);
+      if (response.status === 409) {
+        alert('This wallet is already registered.');
+      } else {
+        alert(`Error: ${errorData.message}`);
+      }
       return;
     }
-
+  
     alert('Successfully joined the whitelist!');
   };
 

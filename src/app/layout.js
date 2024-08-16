@@ -12,7 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <Head>
+    <html>
+      <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         {/* Google tag (gtag.js) */}
@@ -27,8 +28,9 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-      </Head>
+      </head>
       <body className={inter.className}>{children}</body>
+      </html>
     </>
   );
 }

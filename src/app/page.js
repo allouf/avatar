@@ -36,6 +36,7 @@ import { useWallet } from '../hooks/useWallet';
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const { walletAddress } = useWallet();
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     if (document.readyState === 'complete') {
@@ -48,8 +49,33 @@ export default function Home() {
       };
     }
   }, []);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!email.trim() || !walletAddress.trim()) {
+      alert('Both email and wallet address are required.');
+      return;
+    }
+
+    const response = await fetch('/api/joinWhitelist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ walletId: walletAddress, email }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      if (response.status === 409) {
+        alert('This wallet is already registered.');
+      } else {
+        alert(`Error: ${errorData.message}`);
+      }
+      return;
+    }
+
+    alert('Successfully joined the whitelist!');
   };
 
   const scrollToTop = () => {
@@ -201,18 +227,20 @@ export default function Home() {
             Join Whitelist
           </h4>
           <div className="px-2 w-full">
-            <form onSubmit={handleSubmit} className="w-[95%] mx-auto sm:w-[400px] xl:w-[680px] lg:w-[400px] justify-between flex px-2 py-1 xl:py-3 md:pl-7 rounded-[7px] border text-white border-[#5991ff] ">
-              <input className="py-4 w-[100%] bg-opacity-0 reset-input text-xs md:text-sm xl:text-lg"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-              />
-              <button className="w-10 md:w-12 cursor-pointer">
-                <Image src={subscribe} />
-              </button>
-            </form>
-          </div>
+      <form onSubmit={handleSubmit} className="w-[95%] mx-auto sm:w-[400px] xl:w-[680px] lg:w-[400px] justify-between flex px-2 py-1 xl:py-3 md:pl-7 rounded-[7px] border text-white border-[#5991ff]">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button type="submit" className="w-10 md:w-12 cursor-pointer">
+          <Image src={subscribe} alt="Subscribe" />
+        </button>
+      </form>
+    </div>
           <div className="w-full mt-10 md:mt-24">
             <PartnershipSection />
           </div>
