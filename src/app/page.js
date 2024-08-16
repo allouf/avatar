@@ -31,6 +31,7 @@ import roadMapBg from '../../public/assets/roadmap-bg.png';
 import zfGradient from '../../public/assets/zf-gradient.webp';
 import toggleUp from '../../public/assets/toggle-up.png';
 import Loader from '../components/loader.js'
+import PartnershipSection from '@/components/PartnershipSection';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -210,6 +211,9 @@ export default function Home() {
                 <Image src={subscribe} />
               </button>
             </form>
+          </div>
+          <div className="w-full mt-10 md:mt-24">
+            <PartnershipSection />
           </div>
           <Footer />
           <div className="fixed bottom-8 right-8 z-10">
