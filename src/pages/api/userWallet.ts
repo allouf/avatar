@@ -1,10 +1,10 @@
 
-import  connectToDatabase  from '../../utils/mongo-init';
-import UserWallet from '../models/UserWallet';
-import AirdropInfo from '../models/AirdropInfo';
-import  IAirdropInfo  from '../models/AirdropInfo';
+import  connectToDatabase  from '../../../utils/mongo-init';
+import UserWallet from '../../models/UserWallet';
+import AirdropInfo from '../../models/AirdropInfo';
+import  IAirdropInfo  from '../../models/AirdropInfo';
 import Cors from 'cors';
-import initMiddleware from '../../utils/init-middleware';
+import initMiddleware from '../../../utils/init-middleware';
 import { NextApiRequest, NextApiResponse } from 'next';
 // Initialize the cors middleware
 const cors = initMiddleware(

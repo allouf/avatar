@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connectToDatabase from '../../utils/mongo-init';
-import UserWallet from '../models/UserWallet';
+import connectToDatabase from '../../../utils/mongo-init';
+import UserWallet from '../../models/UserWallet';
 import Cors from 'cors';
-import initMiddleware from '../../utils/init-middleware';
+import initMiddleware from '../../../utils/init-middleware';
 
 // Initialize the cors middleware
 const cors = initMiddleware(

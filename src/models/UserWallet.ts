@@ -7,8 +7,8 @@ interface UserWallet extends Document {
 }
 
 const UserWalletSchema: Schema = new Schema({
-  email: { type: String, required: true },
-  walletId: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  walletId: { type: String, required: true, unique: true },
   hasClaimed: { type: Boolean, default: false }
 },
 { collection: "UserWallet", timestamps: true });

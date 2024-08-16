@@ -15,6 +15,10 @@ export default async function connectToDatabase () {
     return cachedDb;
   }
 
+  if (!MONGODB_URI) {
+    throw new Error('MONGODB_URI is not defined');
+  }
+  
   const db = await mongoose.connect(MONGODB_URI, {
     autoIndex: true,
   });
