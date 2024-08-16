@@ -16,16 +16,16 @@ return (
         </h4>
         <ul className='px-2.5 max-w-[375px] md:max-w-[100%] mx-auto flex justify-between sm:justify-center sm:gap-10 md:gap-12 align-center'>
             <li>
-                <Image className="max-w-24  sm:max-w-32 md:max-w-44 xl:max-w-full" src={web3}/>
+                <Image className="max-w-24  sm:max-w-32 lg:max-w-44 xl:max-w-full" src={web3}/>
             </li>
             <li>
-                <Image className="max-w-8  sm:max-w-10 md:max-w-44 xl:max-w-full" src={ttf}/>
+                <Image className="max-w-8  sm:max-w-10 lg:max-w-44 xl:max-w-full" src={ttf}/>
             </li>
             <li>
-                <Image className="max-w-12  sm:max-w-16 md:max-w-40 xl:max-w-full" src={w3}/>
+                <Image className="max-w-12  sm:max-w-16 lg:max-w-40 xl:max-w-full" src={w3}/>
             </li>
             <li>
-                <Image className="max-w-10  sm:max-w-12 md:max-w-48 xl:max-w-full" src={tt}/>
+                <Image className="max-w-10  sm:max-w-12 lg:max-w-48 xl:max-w-full" src={tt}/>
             </li>
         </ul>
         </div>
