@@ -32,7 +32,7 @@ import zfGradient from '../../public/assets/zf-gradient.webp';
 import toggleUp from '../../public/assets/toggle-up.png';
 import Loader from '../components/loader.js'
 import PartnershipSection from '@/components/PartnershipSection';
-
+import { useWallet } from '../hooks/useWallet';
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const { walletAddress } = useWallet();
