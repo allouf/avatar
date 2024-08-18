@@ -7,9 +7,12 @@ import profile from '../../../public/assets/profile.png';
 import menuicon from '../../../public/assets/menu-icon.svg';
 import { motion } from 'framer-motion';
 import Script from "next/script";
+import { useWallet } from '../../hooks/useWallet';
+import WalletConnectButton from '../../hooks/WalletConnectButton';
 
 export default function Header() {
   const [headerOpen, setHeaderOpen] = useState(false);
+  const { walletAddress, connectWallet, disconnectWallet, isCorrectNetwork } = useWallet();
 
   return (
     <>
@@ -56,9 +59,7 @@ export default function Header() {
 
                className='headerbtn-box flex items-center lg:gap-3 md:gap-1'>
               <div className='left-line h-4 w-0.5 bg-black'></div>
-              <div className='header-btn py-1.5 lg:py-2 px-3 xl:py-3.5 lg:px-4 md:px-2 text-white Oxanium '>
-              <a href="#" className='font-bold disabled-btn'>Connect Wallet</a>
-            </div>
+              <WalletConnectButton />
               <div className='right-line h-4 w-0.5'></div>
               <div className='profile-img hidden pr-2'>
                 <Image src={profile} alt="Profile" loading="lazy" />

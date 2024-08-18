@@ -32,9 +32,11 @@ import zfGradient from '../../public/assets/zf-gradient.webp';
 import toggleUp from '../../public/assets/toggle-up.png';
 import Loader from '../components/loader.js'
 import PartnershipSection from '@/components/PartnershipSection';
-
+import { useWallet } from '../hooks/useWallet';
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const { walletAddress } = useWallet();
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     if (document.readyState === 'complete') {
@@ -47,8 +49,33 @@ export default function Home() {
       };
     }
   }, []);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!email.trim() || !walletAddress.trim()) {
+      alert('Both email and wallet address are required.');
+      return;
+    }
+
+    const response = await fetch('/api/joinWhitelist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ walletId: walletAddress, email }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      if (response.status === 409) {
+        alert('This wallet is already registered.');
+      } else {
+        alert(`Error: ${errorData.message}`);
+      }
+      return;
+    }
+
+    alert('Successfully joined the whitelist!');
   };
 
   const scrollToTop = () => {

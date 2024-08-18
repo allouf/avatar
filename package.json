@@ -9,11 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ethersproject/providers": "^5.7.2",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "@lottiefiles/react-lottie-player": "^3.5.4",
+    "axios": "^1.7.4",
+    "cors": "^2.8.5",
+    "ethers": "^6.13.2",
     "framer-motion": "^11.3.21",
     "lottie-react": "^2.4.0",
+    "mongoose": "^7.0.0",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
@@ -22,6 +27,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/react": "18.3.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",

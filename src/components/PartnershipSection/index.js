@@ -9,7 +9,8 @@ import tt from '../../../public/assets/tt.png'
 export default function PartnershipSection() {
 
 return (
-    <div className='PartnershipSection w-full'>
+    <div></div>
+    /*<div className='PartnershipSection w-full'>
         <div className='container'>
         <h4 className="text-center text-white text-2xl md:text-4xl xl:text-5xl mb-8 lg:mb-10 Oxanium md:mt-10 font-bold">
           Partnerships
@@ -29,7 +30,7 @@ return (
             </li>
         </ul>
         </div>
-    </div>
+    </div>*/
 
 );
 }
