@@ -7,19 +7,9 @@ const WalletConnectButton = () => {
 
   return (
     <div>
-      {walletAddress ? (
-        <>
-          <span>
-            Connected: {walletAddress.substring(0, 6)}...{walletAddress.substring(walletAddress.length - 4)}
-          </span>
-          <button onClick={disconnectWallet}>Disconnect</button>
-        </>
-      ) : (
-        <button onClick={connectWallet}>Connect Wallet</button>
-      )}
-      {!isCorrectNetwork && (
-        <p>Please connect to the Ethereum Mainnet.</p>
-      )}
+       <div className='header-btn py-1.5 lg:py-2 px-3 xl:py-3.5 lg:px-4 md:px-2 text-white Oxanium '>
+              <a href="#" className='font-bold disabled-btn'>Connect Wallet</a>
+            </div>
     </div>
   );
 };
