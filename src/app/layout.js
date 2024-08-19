@@ -15,15 +15,6 @@ export default function RootLayout({ children }) {
      <head>
   <title>{metadata.title}</title>
   <meta name="description" content={metadata.description} />
-  <meta property="og:title" content={metadata.title} />
-  <meta property="og:description" content={metadata.description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourwebsite.com" />
-  <meta property="og:image" content="https://yourwebsite.com/your-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={metadata.title} />
-  <meta name="twitter:description" content={metadata.description} />
-  <meta name="twitter:image" content="https://yourwebsite.com/your-image.jpg" />
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-VTKRRHY6PQ"
