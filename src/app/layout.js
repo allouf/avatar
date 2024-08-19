@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-     <Head>
+     <head>
   <title>{metadata.title}</title>
   <meta name="description" content={metadata.description} />
   <meta property="og:title" content={metadata.title} />
@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
       `,
     }}
   />
-</Head>
+</head>
 
       <body className={inter.className}>{children}</body>
     </html>
