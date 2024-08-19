@@ -4,7 +4,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "IDEA Engine: AI - wearable crypto collectibles ecosystem",
+  title: "IDEA Engine",
   description: "Explore the IDEA Engine, an innovative ecosystem where AI meets wearable crypto collectibles. Unlock new dimensions of digital ownership and creativity.",
 };
 
