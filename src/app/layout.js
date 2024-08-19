@@ -13,18 +13,24 @@ export default function RootLayout({ children }) {
     <>
     <html>
       <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTKRRHY6PQ"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-VTKRRHY6PQ');
-            `,
-          }}
-        />
+      <title>{metadata.title}</title>
+  <meta name="description" content={metadata.description} />
+  <meta property="og:title" content={metadata.title} />
+  <meta property="og:description" content={metadata.description} />
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-VTKRRHY6PQ"
+  ></script>
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VTKRRHY6PQ');
+      `,
+    }}
+  />
       </head>
       <body className={inter.className}>{children}</body>
       </html>
