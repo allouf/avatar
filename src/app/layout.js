@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "IDEA Engine: AI - wearable crypto collectibles ecosystem",
-  description: "IDEA Engine: AI - wearable crypto collectibles ecosystem",
+  description: "Explore the IDEA Engine, an innovative ecosystem where AI meets wearable crypto collectibles. Unlock new dimensions of digital ownership and creativity.",
 };
 
 export default function RootLayout({ children }) {
