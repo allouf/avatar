@@ -49,9 +49,9 @@ export default async function handler(req, res) {
         const sentFrom = new Sender("MS_YdY58I@trial-zr6ke4no7x3lon12.mlsender.net", "Incentives");
 
         //A.blazaitiss@gmail.com
-        //sales
+        //sales@idea-engine.ai
         const recipients = [
-          new Recipient("A.blazaitiss@gmail.com", "Admin")
+          new Recipient("sales@idea-engine.ai", "Admin")
         ];
         
         const emailParams = new EmailParams()
