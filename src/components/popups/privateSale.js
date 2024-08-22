@@ -8,9 +8,58 @@ import Completed from '@/components/popups/completed'; // Import the Completed c
 export default function PrivateSale({ onClose }) {
   const [isCompleted, setIsCompleted] = useState(false);
 
+  const handleError = (error) => {
+    console.log('Error occurred:', error);
+    if (error.startsWith('The email address')) {
+      alert('You have already registered for the private sale.');
+    } else if (error.startsWith('VALIDATION_ERROR')) {
+      alert('Please check the email address and try again.');
+    } else if (error.startsWith('DATABASE_CONNECTION_ERROR')) {
+      alert('Our database is currently unavailable. Please try again later.');
+    } else if (error.startsWith('MAILERSEND_API_ERROR')) {
+      alert('Our email service is currently unavailable. Please try again later.');
+    } else {
+      alert('Submission failed. Please try again.');
+    }
+  };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsCompleted(true); 
+    const userEmail = event.target.elements[0].value;
+  
+    console.log('User email:', userEmail);
+
+    // Validate the email using a regular expression
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(userEmail)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+  
+    console.log('Email is valid, submitting to API...');
+
+    // Handle submission of private sale email
+    fetch('/api/submitPrivateSaleEmail', { // Replace with your actual API endpoint URL
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: userEmail }),
+    })
+    .then((response) => {
+      console.log('API response:', response);
+      return response.json();
+    })
+    .then((data) => {
+      console.log('API data:', data);
+      if (data.message && data.message.startsWith('Thank you')) {
+        setIsCompleted(true);
+      } else {
+        handleError(data.message);
+      }
+    })
+    .catch((error) => {
+      console.error('API error:', error);
+      handleError('UNKNOWN_ERROR');
+    });
   };
 
   return (

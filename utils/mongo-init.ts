@@ -10,19 +10,27 @@ if (!MONGODB_URI) {
 
 let cachedDb: mongoose.Connection | null = null;
 
-export default async function connectToDatabase () {
+export default async function connectToDatabase() {
   if (cachedDb) {
+    console.log("Using cached database connection");
     return cachedDb;
   }
 
   if (!MONGODB_URI) {
     throw new Error('MONGODB_URI is not defined');
   }
-  
-  const db = await mongoose.connect(MONGODB_URI, {
-    autoIndex: true,
-  });
 
-  cachedDb = db.connections[0];
-  return cachedDb;
-};
+  try {
+    console.log(`Connecting to MongoDB at ${MONGODB_URI}`);
+    const db = await mongoose.connect(MONGODB_URI, {
+      autoIndex: true,
+    });
+
+    console.log("Connected to MongoDB successfully");
+    cachedDb = db.connections[0];
+    return cachedDb;
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
+    throw err;
+  }
+}

@@ -8,6 +8,7 @@ export enum EndpointUrl {
   IS_USER_WALLET_CONNECTED_WITH_EMAIL = 1,
   GET_AIRDROP_STATS = 2, 
   JOIN_WHITELIST = 3,
+  SUBMIT_PRIVATE_SALE_EMAIL = 4,
 }
 
 // Define the corresponding URLs separately
@@ -16,6 +17,7 @@ export const endpointUrls: Record<EndpointUrl, string> = {
   [EndpointUrl.IS_USER_WALLET_CONNECTED_WITH_EMAIL]: `${domainUrl}/isUserWalletConnectedWithEmail?walletId=:walletId`,
   [EndpointUrl.GET_AIRDROP_STATS]: `${domainUrl}/userWalletStats`,
   [EndpointUrl.JOIN_WHITELIST]: `${domainUrl}/joinWhitelist`,
+  [EndpointUrl.SUBMIT_PRIVATE_SALE_EMAIL]: `${domainUrl}/submitPrivateSaleEmail`,
 };
 
 export default { EndpointUrl, endpointUrls };
