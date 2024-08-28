@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import Image from 'next/image';
 import web3 from '../../../public/assets/web3.png'
-import ttf from '../../../public/assets/ttf.png'
+import ttf from '../../../public/assets/ttf3.png'
 import w3 from '../../../public/assets/w3.png'
 import tt from '../../../public/assets/tt.png'
 
