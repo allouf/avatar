@@ -20,7 +20,9 @@ return (
                 <Image className="max-w-24  sm:max-w-32 lg:max-w-44 xl:max-w-full" src={web3}/>
             </li> */}
             <li>
-                <Image className="max-w-8  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={ttf}/>
+                <a href="https://x.com/ttfbot">
+                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={ttf}/>
+                </a>
             </li>
             {/* <li>
                 <Image className="max-w-12  sm:max-w-16 lg:max-w-40 xl:max-w-full" src={w3}/>
