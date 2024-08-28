@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import Image from 'next/image';
 import web3 from '../../../public/assets/web3.png'
-import ttf from '../../../public/assets/ttf3.png'
+import ttf from '../../../public/assets/ttf5.png'
 import w3 from '../../../public/assets/w3.png'
 import tt from '../../../public/assets/tt.png'
 
@@ -26,7 +26,7 @@ return (
             </li>
             {/* <li>
                 <Image className="max-w-12  sm:max-w-16 lg:max-w-40 xl:max-w-full" src={w3}/>
-            </li>
+            </li> 
             <li>
                 <Image className="max-w-10  sm:max-w-12 lg:max-w-48 xl:max-w-full" src={tt}/>
             </li> */}
