@@ -24,7 +24,7 @@ import nft1 from "../../public/assets/nft1.webp";
 import nft5 from "../../public/assets/nft7.webp";
 import nft3 from "../../public/assets/nft3.webp";
 import nft4 from "../../public/assets/nft4.webp";
-import lineThing1 from "../../public/assets/line3.png";
+import lineThing1 from "../../public/assets/line3.webp";
 import gradient from "../../public/assets/gradientBlue.svg";
 import cardGradient from '../../public/assets/card-gradient.png';
 import roadMapBg from '../../public/assets/roadmap-bg.png';
