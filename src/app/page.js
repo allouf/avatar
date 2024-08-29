@@ -103,7 +103,7 @@ export default function Home() {
           <Header />
           <FirstSection />
 
-          <div className="absolute left-0 z-[-1] w-[70%] top-[300px]">
+          <div className="absolute left-0 z-[-1] w-[70%] top-[300px] mw-[700px]">
             <Image src={lineThing1} />
           </div>
 
