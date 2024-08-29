@@ -9,6 +9,7 @@ export enum EndpointUrl {
   GET_AIRDROP_STATS = 2, 
   JOIN_WHITELIST = 3,
   SUBMIT_PRIVATE_SALE_EMAIL = 4,
+  WHITELIST = 5,
 }
 
 // Define the corresponding URLs separately
@@ -18,6 +19,7 @@ export const endpointUrls: Record<EndpointUrl, string> = {
   [EndpointUrl.GET_AIRDROP_STATS]: `${domainUrl}/userWalletStats`,
   [EndpointUrl.JOIN_WHITELIST]: `${domainUrl}/joinWhitelist`,
   [EndpointUrl.SUBMIT_PRIVATE_SALE_EMAIL]: `${domainUrl}/submitPrivateSaleEmail`,
+  [EndpointUrl.WHITELIST]: `${domainUrl}/Whitelist`,
 };
 
 export default { EndpointUrl, endpointUrls };

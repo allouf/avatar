@@ -3,15 +3,49 @@ import Image from 'next/image';
 import PopupLogo from '../../../public/assets/popupLogo.webp';
 import Cross from '../../../public/assets/cross.svg';
 import Completed from '@/components/popups/completed';
+import axios from 'axios';
 
 import './popup.css';
 
 export default function JoinWhitelist({ onClose }) {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsCompleted(true);
+    try {
+      console.log('Making POST request to /api/Whitelist');
+      const response = await axios.post('/api/Whitelist', { email: email });
+      console.log('Response received:', response);
+      if (response.status === 201) {
+        console.log('Email added to whitelist successfully');
+        const redirectUrl = response.data.redirect;
+        window.location.href = redirectUrl; // Redirect to Substack subscription form
+        setIsCompleted(true);
+        setResponseMessage('Email with instructions will be sent shortly!');
+        onClose(); // Close the form
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 400) {
+          if (error.response.data.message.includes('already registered')) {
+            setError('Email already exists on our whitelist.');
+          } else {
+            setError('Please enter a valid email address');
+          }
+        } else if (error.response.status === 500) {
+          setError('Error connecting to database. Please try again later.');
+        }
+      } else {
+        setError('Error submitting email. Please try again later.');
+      }
+    }
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   return (
@@ -41,8 +75,11 @@ export default function JoinWhitelist({ onClose }) {
                     className='text-xs sm:text-sm emailInput text-black bg-white mt-5 md:mt-10 py-3 md:py-4 px-5 w-full mb-2 md:mb-5' 
                     placeholder='Enter your email' 
                     type='email' 
+                    value={email}
+                    onChange={handleEmailChange}
                     required 
                   />
+                  {error && <p className='text-red-500'>{error}</p>}
                   <button 
                     type="submit"
                     className='bg-blue py-3 md:py-4 px-6 emailButton text-xs sm:text-sm w-full'
@@ -55,7 +92,7 @@ export default function JoinWhitelist({ onClose }) {
           </div>
         </div>
       ) : (
-        <Completed onClose={onClose } text='Email with instructions will be sent shortly!'/>
+        <Completed onClose={onClose } text={responseMessage}/>
       )}
     </>
   );
