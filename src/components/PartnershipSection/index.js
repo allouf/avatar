@@ -3,6 +3,8 @@ import './style.css';
 import Image from 'next/image';
 import web3 from '../../../public/assets/web3.png'
 import ttf from '../../../public/assets/ttf5.png'
+import lighthouseLogo from '../../../public/assets/lighthouse-logo.webp'
+
 import w3 from '../../../public/assets/w3.png'
 import tt from '../../../public/assets/tt.png'
 
@@ -22,6 +24,11 @@ return (
             <li>
                 <a href="https://x.com/ttfbot">
                 <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={ttf}/>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.lighthouse.storage/">
+                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={lighthouseLogo}/>
                 </a>
             </li>
             {/* <li>
