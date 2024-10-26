@@ -46,7 +46,7 @@ export default async function handler(req, res) {
           apiKey: mailToken,
         });
 
-        const sentFrom = new Sender("MS_YdY58I@trial-zr6ke4no7x3lon12.mlsender.net", "Incentives");
+        const sentFrom = new Sender("MS_2yGaQO@trial-3yxj6lj09374do2r.mlsender.net", "Incentives");
 
         //A.blazaitiss@gmail.com
         //sales@idea-engine.ai

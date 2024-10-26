@@ -45,7 +45,9 @@ export default function PrivateSale({ onClose }) {
       body: JSON.stringify({ email: userEmail }),
     })
     .then((response) => {
-      console.log('API response:', response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       return response.json();
     })
     .then((data) => {
