@@ -1,6 +1,6 @@
 import connectToDatabase from '../../../utils/mongo-init';
 import PrivateSaleEmail from '../../models/PrivateSaleEmail';
-import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+import { ServerClient } from 'postmark';
 
 export default async function handler(req, res) {
   console.log('Received request:', req.body); // Log the incoming request body
@@ -36,34 +36,23 @@ export default async function handler(req, res) {
         console.log('Saving the new document to the database...');
         await privateSaleEmail.save({ session });
 
-        console.log('Sending email notification via MailerSend...');
-        const mailToken = process.env.mailToken;
-        if (!mailToken) {
-          throw new Error('MailerSend API key is not set');
+        console.log('Sending email notification via Postmark...');
+        const postmarkApiKey = process.env.POSTMARK_API_KEY; // Use your Postmark API key
+        if (!postmarkApiKey) {
+          throw new Error('Postmark API key is not set');
         }
         
-        const mailerSend = new MailerSend({
-          apiKey: mailToken,
+        const postmarkClient = new ServerClient(postmarkApiKey);
+
+        // Send the email to sales@idea-engine.ai
+        await postmarkClient.sendEmail({
+          From: "sales@idea-engine.ai",  // Use your verified sender email in Postmark
+          To: "sales@idea-engine.ai",               // Recipient email
+          Subject: "Notification from Idea Engine",
+          HtmlBody: `<strong>New registration in Private sale: </strong>${email}`,
+          TextBody: `New registration in Private sale: ${email}`,
+          ReplyTo: "sales@idea-engine.ai", // Optional, replace if needed
         });
-
-        const sentFrom = new Sender("MS_2yGaQO@trial-3yxj6lj09374do2r.mlsender.net", "Incentives");
-
-        //A.blazaitiss@gmail.com
-        //sales@idea-engine.ai
-        const recipients = [
-          new Recipient("sales@idea-engine.ai", "Admin")
-        ];
-        
-        const emailParams = new EmailParams()
-          .setFrom(sentFrom)
-          .setTo(recipients)
-          .setReplyTo(sentFrom)
-          .setSubject("Notification from idea engin")
-          .setHtml(`<strong>New registration in Private sale: </strong>${email}`)
-          .setText(`New registration in Private sale ${email}`);
-        
-        await mailerSend.email.send(emailParams);
-        
 
         // Commit the transaction
         await session.commitTransaction();
