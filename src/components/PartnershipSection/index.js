@@ -4,7 +4,7 @@ import Image from 'next/image';
 import web3 from '../../../public/assets/web3.png'
 import ttf from '../../../public/assets/ttf5.png'
 import lighthouseLogo from '../../../public/assets/lighthouse-logo.webp'
-import platinumVc from '../../../public/assets/platinumVc.png'
+import platinumVc from '../../../public/assets/platinum-vc.svg'
 import yukai from '../../../public/assets/yukai.webp'
 import octalysis from '../../../public/assets/octalysis.svg'
 
