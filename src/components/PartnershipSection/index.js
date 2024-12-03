@@ -5,8 +5,8 @@ import web3 from '../../../public/assets/web3.png'
 import ttf from '../../../public/assets/ttf5.png'
 import lighthouseLogo from '../../../public/assets/lighthouse-logo.webp'
 import platinumVc from '../../../public/assets/platinum-vc.svg'
-import yukai from '../../../public/assets/yukai.webp'
-import octalysis from '../../../public/assets/octalysis.svg'
+import yuhkai from '../../../public/assets/yuhkai.png'
+import octalysis from '../../../public/assets/octalysis.png'
 
 import w3 from '../../../public/assets/w3.png'
 import tt from '../../../public/assets/tt.png'
@@ -36,17 +36,17 @@ return (
             </li>
             <li>
                 <a href="https://vc.platinum.fund/">
-                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={platinumVc}/>
+                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-48" src={platinumVc}/>
                 </a>
             </li>
             <li>
                 <a href="https://yukaichou.com/">
-                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={yukai}/>
+                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={yuhkai}/>
                 </a>
             </li>
             <li>
                 <a href="https://octalysisgroup.com/">
-                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-24" src={octalysis}/>
+                <Image className="max-w-16  sm:max-w-10 lg:max-w-44 xl:max-w-full w-48" src={octalysis}/>
                 </a>
             </li>
             {/* <li>
