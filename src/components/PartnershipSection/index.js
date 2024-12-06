@@ -28,6 +28,11 @@ return (
                 </a>
             </li>
             <li>
+                <a href="https://yukaichou.com/">
+                <Image className="max-w-16 sm:max-w-20 md:max-w-full w-24" src={yuhkai}/>
+                </a>
+            </li>
+            <li>
                 <a href="https://www.lighthouse.storage/">
                 <Image className="max-w-16 sm:max-w-20 md:max-w-full w-24" src={lighthouseLogo}/>
                 </a>
@@ -35,11 +40,6 @@ return (
             <li>
                 <a href="https://vc.platinum.fund/">
                 <Image className="max-w-24 sm:max-w-28 md:max-w-full w-48" src={platinumVc}/>
-                </a>
-            </li>
-            <li>
-                <a href="https://yukaichou.com/">
-                <Image className="max-w-16 sm:max-w-20 md:max-w-full w-24" src={yuhkai}/>
                 </a>
             </li>
             <li>
