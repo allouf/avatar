@@ -27,8 +27,8 @@ export default function PrivateSale({ onClose }) {
     event.preventDefault();
     const userEmail = event.target.elements[0].value;
   
-    console.log('User email:', userEmail);
-
+    console.log('User  email:', userEmail);
+  
     // Validate the email using a regular expression
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(userEmail)) {
@@ -37,16 +37,18 @@ export default function PrivateSale({ onClose }) {
     }
   
     console.log('Email is valid, submitting to API...');
-
+  
     // Handle submission of private sale email
-    fetch('/api/submitPrivateSaleEmail', { // Replace with your actual API endpoint URL
+    fetch('/api/submitPrivateSaleEmail', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userEmail }),
     })
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json().then((data) => {
+          throw new Error(data.message || 'Submission failed. Please try again.');
+        });
       }
       return response.json();
     })
@@ -60,7 +62,7 @@ export default function PrivateSale({ onClose }) {
     })
     .catch((error) => {
       console.error('API error:', error);
-      handleError('UNKNOWN_ERROR');
+      handleError(error.message); // Use the specific error message
     });
   };
 

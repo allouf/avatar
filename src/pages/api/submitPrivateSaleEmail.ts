@@ -68,8 +68,12 @@ export default async function handler(req, res) {
         // Close the session
         session.endSession();
       }
-    } catch (err) {
+    } 
+    catch (err) {
       console.error('Error in processing the request:', err.message);
+      if (err.message.includes('ETIMEOUT')) {
+        return res.status(500).json({ message: 'DATABASE_CONNECTION_ERROR: Our database is currently unavailable. Please try again later.' });
+      }
       return res.status(500).json({ message: 'Error submitting email. Please try again later.' });
     }
   } else {
