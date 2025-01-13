@@ -1,6 +1,5 @@
 import connectToDatabase from '../../../utils/mongo-init';
 import PrivateSaleEmail from '../../models/PrivateSaleEmail';
-import { ServerClient } from 'postmark';
 
 export default async function handler(req, res) {
   console.log('Received request:', req.body); // Log the incoming request body
@@ -36,23 +35,37 @@ export default async function handler(req, res) {
         console.log('Saving the new document to the database...');
         await privateSaleEmail.save({ session });
 
-        console.log('Sending email notification via Postmark...');
-        const postmarkApiKey = process.env.POSTMARK_API_KEY; // Use your Postmark API key
-        if (!postmarkApiKey) {
-          throw new Error('Postmark API key is not set');
-        }
-        
-        const postmarkClient = new ServerClient(postmarkApiKey);
+        console.log('Sending email notification via Infobip...');
+        const infobipApiKey = "App 410b47b96dc7f27b675002164088bb75-e69fbaf5-eb94-404b-b712-55a7034ddf3d"; // Use your Infobip API key
+        const infobipUrl = "https://pe12re.api.infobip.com/email/3/send";
 
-        // Send the email to sales@idea-engine.ai
-        await postmarkClient.sendEmail({
-          From: "sales@idea-engine.ai",  // Use your verified sender email in Postmark
-          To: "sales@idea-engine.ai",               // Recipient email
-          Subject: "Notification from Idea Engine",
-          HtmlBody: `<strong>New registration in Private sale: </strong>${email}`,
-          TextBody: `New registration in Private sale: ${email}`,
-          ReplyTo: "sales@idea-engine.ai", // Optional, replace if needed
-        });
+        const formdata = new FormData();
+        formdata.append("from", "Incentives <sales@idea-engine.ai>"); // Changed sender name
+        formdata.append("subject", "New registration in Private sale");
+        formdata.append("to", "sales@idea-engine.ai");
+        //formdata.append("to", JSON.stringify({ to: email, placeholders: { firstName: "User " } })); // Use the actual email and set a placeholder
+        formdata.append("text", `Hi User, this is a new registration from ${email}.`); // Changed to use "User "
+
+        const requestOptions: RequestInit = {
+          method: "POST",
+          headers: {
+            "Authorization": infobipApiKey,
+            "Accept": "application/json"
+          },
+          body: formdata,
+          redirect: "follow"
+        };
+
+        const response = await fetch(infobipUrl, requestOptions);
+        const result = await response.json();
+
+        console.log('Infobip response status:', response.status);
+        console.log('Infobip response body:', result);
+        
+        if (!response.ok) {
+          console.error('Validation errors:', result.requestError?.validationErrors);
+          throw new Error(`Infobip error: ${result.requestError?.serviceException?.text || 'Unknown error'}`);
+        }
 
         // Commit the transaction
         await session.commitTransaction();
