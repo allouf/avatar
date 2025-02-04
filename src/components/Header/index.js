@@ -32,7 +32,7 @@ export default function Header() {
             transition={{ duration: 0.6, delay: 0.8 }}
              className='headerDefault headerMenu py-2 xl:py-5 xl:px-16 md:px-6 sm:px-3'>
               <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
-              <li><a href="https://drive.google.com/file/d/15hismMm7FyXy-0ul3IaJVOqHH-1Kr76P/view" className='menu-links uppercase'>White paper</a></li>
+              <li><a href="https://drive.google.com/file/d/1rD898_YQ4VjSpGPzStYgCFvXEbwEBAWD/view?usp=drivesdk" className='menu-links uppercase'>Pitch Deck</a></li>
               <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a></li>
               <li><a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a></li>
               </ul>
