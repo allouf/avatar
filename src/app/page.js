@@ -110,7 +110,7 @@ export default function Home() {
           <SecondSection
             preTitle={"Wearable Threads On Chain + AI "}
             blueText={""}
-            titleText={"Gamified DePin + AI Companion System On Wearable"}
+            titleText={"Social Network With Launchpad Features "}
             paragraph={"Launchpad With Smartwatch DePIN Integration"}
             sectionImg={secondImage}
             responsiveImage={secondImageResponsive}
