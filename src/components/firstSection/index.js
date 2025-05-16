@@ -64,7 +64,7 @@ export default function FirstSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className='hero_title Oxanium md:text-start font-bold text-2xl mt-10 md:text-3xl lg:text-4xl xl:text-5xl mb-5 xl:mb-10 md:w-[97%]'
           >
-            AI - WEARABLE CRYPTO COLLECTIBLES ECOSYSTEM
+            Social Launchpad For Gamified AI Agents
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -72,7 +72,7 @@ export default function FirstSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className='LatoLight xl:text-xl md:text-start'
           >
-            Gamified DePin + AI companion System on wearable
+            Social Network With Launchpad Features
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}

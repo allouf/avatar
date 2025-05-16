@@ -109,9 +109,9 @@ export default function Home() {
 
           <SecondSection
             preTitle={"Wearable Threads On Chain + AI "}
-            blueText={"Gamified"}
-            titleText={"DePin + SocialFI for AI "}
-            paragraph={"Mini-games to level up your desired Identity on Smartwatch"}
+            blueText={""}
+            titleText={"Social Network With Launchpad Features "}
+            paragraph={"Launchpad With Smartwatch DePIN Integration"}
             sectionImg={secondImage}
             responsiveImage={secondImageResponsive}
           />
@@ -139,7 +139,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative text-xs sm:text-sm mx-auto text-white inter mt-5 xl:mt-10 font-light inter xl:text-lg lg:w-[650px] xl:w-[850px] md:text-center"
               >
-                Revolutionizing AI and social interactions. Users can engage in peer-to-peer zero knowledge exchanges, ensuring complete privacy and security during data transactions. Users will be rewarded for taking notes, interacting with artificial intelligence, and communicating with other users.
+                We are a social network with launchpad features that helps monetize AI agents on smartwatches. Our no-code platform enables the creation of AI Agent tokens integrated with smartwatches, allowing users to earn revenue-sharing rewards by participating in AI-generated quests and mini-games.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -172,9 +172,9 @@ export default function Home() {
           <gradientcontainer className="relative z-2 w-full">
             <SecondSection
               preTitle={"Incentivized But Not Play To Earn Model"}
-              blueText={"ZK NFT Quests/"}
+              blueText={"Quests And Mini -"}
               titleText={"Games"}
-              paragraph={"Gamified Threads with custom data variables"}
+              paragraph={"Earn Revenue Sharing Rewards By Completing AI Tasks"}
               sectionImg={thirdImage}
               responsiveImage={thirdImageResponsive}
             />
@@ -182,9 +182,9 @@ export default function Home() {
 
           <SecondSection
             preTitle={"Earn desired cryptocurrency by creating AI + DAO pools on the smartwatch"}
-            blueText={"Pair your any token"}
-            titleText={"with AI"}
-            paragraph={"Your token will be able Tell Jokes, Provide Advice, Offer Tips and much more."}
+            blueText={"Pair Your Any ERC-20 Token "}
+            titleText={"With AI Agent ERC-7857"}
+            paragraph={"Your Agent Will Be Able Analyse And Collect Data, Generate Mini-games/Quests, Collect And Connect Ideas, Distribute Rewards , Generate Close Loop Agents."}
           />
 
           <motion.div
