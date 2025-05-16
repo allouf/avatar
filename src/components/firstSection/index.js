@@ -72,7 +72,7 @@ export default function FirstSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className='LatoLight xl:text-xl md:text-start'
           >
-            Social Network With Launchpad Features
+            Gamified DePin + AI Companion System On Wearable
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
