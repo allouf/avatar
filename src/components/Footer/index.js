@@ -26,8 +26,8 @@ export default function Footer() {
         <div>
         <ul className='flex justify-center footer-list gap-4 lg:gap-6 xl:gap-10'>
             <li><a href="https://drive.google.com/file/d/1QYJd3_3Q2BpZb7HULAW7ZFq-NobK21fC/view?usp=sharing" className='text-xs md:text-sm uppercase footer-gray-text'>Pitch Deck</a></li>
-            <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='text-xs md:text-sm uppercase footer-gray-text'>VISUAL NOVEL</a></li>
-            <li><a href="#" className='menu-links uppercase disabled-link' onClick={(e) => e.preventDefault()}>INITIAL DEMO</a></li>
+            <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view"             className='text-xs md:text-sm uppercase footer-gray-text'>VISUAL NOVEL</a></li>
+            <li><a href="https://drive.google.com/file/d/1_SMZmn1ubxPRdK9SDtbIUoPUTVwoi1fF/view?usp=sharing" className='text-xs md:text-sm uppercase footer-gray-text'>INITIAL DEMO</a></li>
           </ul>
         </div>
         <div className='md:flex gap-4 align-center justify-center'>

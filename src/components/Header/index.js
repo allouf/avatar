@@ -33,8 +33,8 @@ export default function Header() {
              className='headerDefault headerMenu py-2 xl:py-5 xl:px-16 md:px-6 sm:px-3'>
               <ul className='flex text-white xl:gap-12 md:gap-3 lg:gap-6 gap-4'>
               <li><a href="https://drive.google.com/file/d/1QYJd3_3Q2BpZb7HULAW7ZFq-NobK21fC/view?usp=sharing" className='menu-links uppercase'>Pitch Deck</a></li>
-              <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a></li>
-              <li><a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a></li>
+              <li><a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view"             className='menu-links uppercase'>VISUAL NOVEL</a></li>
+              <li><a href="https://drive.google.com/file/d/1_SMZmn1ubxPRdK9SDtbIUoPUTVwoi1fF/view?usp=sharing" className='menu-links uppercase'>INITIAL DEMO</a></li>
               </ul>
             </motion.div>
             {headerOpen &&
@@ -47,7 +47,7 @@ export default function Header() {
                     <a href="https://drive.google.com/file/d/1ZSMbAvM8ulRg9-saG0uZ-cZ8z44dsjvj/view" className='menu-links uppercase'>VISUAL NOVEL</a>
                   </li>
                   <li>
-                    <a href="#" className='menu-links uppercase disabled-link'>INITIAL DEMO</a>
+                    <a href="https://drive.google.com/file/d/1_SMZmn1ubxPRdK9SDtbIUoPUTVwoi1fF/view?usp=sharing" className='menu-links uppercase'>INITIAL DEMO</a>
                   </li>
                 </ul>
               </div>
