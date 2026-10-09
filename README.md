@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# idea-engine — Web3 Token Launch & Whitelist Platform
+
+A Web3 landing platform for token launches: wallet connection, whitelist registration, private-sale signup and airdrop tracking — built as a Next.js dApp with a MongoDB backend.
+
+## Features
+
+- Wallet connection (ethers.js / WalletConnect) with address-based whitelist eligibility
+- Whitelist registration and private-sale email capture, persisted in MongoDB
+- Airdrop info and user-wallet stats API
+- Email notifications via MailerSend / Postmark
+- Responsive landing page with Lottie animations and Framer Motion transitions
+- Roadmap, NFT and partnership sections
+
+## Tech Stack
+
+- **Frontend:** Next.js 14 (App Router), React 18, Tailwind CSS
+- **Backend:** Next.js API routes, MongoDB (Mongoose)
+- **Web3:** ethers.js v6, WalletConnect
+- **Email:** MailerSend, Postmark
+- **Animations:** Lottie, Framer Motion
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.local.example .env.local   # or create .env.local manually
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Variable | Description |
+|---|---|
+| `MONGODB_URI` | MongoDB connection string |
+| `NODE_ENV` | `development` / `production` |
 
-## Learn More
+## API Routes
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Description |
+|---|---|
+| `/api/joinWhitelist` | Register a wallet for the whitelist |
+| `/api/submitPrivateSaleEmail` | Submit a private-sale email |
+| `/api/isUserWalletConnectedWithEmail` | Check wallet/email connection status |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm run start` — start the production server
+- `npm run lint` — run ESLint
